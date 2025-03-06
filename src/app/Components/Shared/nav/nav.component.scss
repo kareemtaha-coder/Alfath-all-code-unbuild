@@ -1,0 +1,233 @@
+@import '../../../../styles.scss';
+
+/* General styling */
+header {
+    font-family: "Hind", sans-serif;
+    background-color: $secondary-color;
+    border-bottom: 4px solid transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Sticky navbar */
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 111030;
+}
+
+/* Navbar */
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+/* Center the links horizontally */
+.collapse .mx-auto {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/* Navbar Links */
+.nav-link {
+    font-weight: bold;
+    color: $primary-color;
+    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 10px 15px;
+    font-size: 1em;
+    position: relative;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.nav-link i {
+    margin-right: 6px;
+}
+
+/* RTL: Reverse icon margin */
+.lang-ar .nav-link i {
+    margin-right: 0;
+    margin-left: 6px;
+}
+
+/* Playful hover effects */
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: $primary-color;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::before {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #ff6600;
+    transform: scale(1.1);
+}
+
+/* Simple bounce effect for the logo */
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Button bounce and color change */
+.btn-primary {
+    background-color: $primary-color;
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary i {
+    margin-right: 6px;
+}
+
+/* RTL: Reverse icon margin in button */
+.lang-ar .btn-primary i {
+    margin-right: 0;
+    margin-left: 6px;
+}
+
+.btn-primary:hover {
+    background-color: #007bb5;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Rounded Buttons */
+.btn-rounded {
+    border-radius: 50px;
+}
+
+/* Navbar color change and animation on scroll */
+header.scrolled {
+    background-color: #ff5722;
+    border-bottom: 4px solid $primary-color;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, border-bottom 0.3s ease, box-shadow 0.3s ease;
+}
+
+.language-select {
+    margin-left: 15px;
+    padding: 8px 25px;
+    border-radius: 50px;
+    border: 2px solid $primary-color;
+    background-color: transparent;
+    color: $primary-color;
+    font-weight: bolder;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    outline: none;
+}
+
+/* RTL: Adjust language select margin */
+.lang-ar .language-select {
+    margin-left: 0;
+    margin-right: 15px;
+}
+
+.language-select:hover, .language-select:focus {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.language-select option {
+    background-color: #fff;
+    border: none;
+    color: $primary-color;
+    width: 100%;
+}
+
+/* RTL specific styles */
+.lang-ar {
+    .navbar-nav {
+        padding-right: 0;
+    }
+
+    .nav-item {
+        text-align: right;
+    }
+
+    .navbar-toggler {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .navbar-brand {
+        margin-right: 0;
+        margin-left: 1rem;
+    }
+
+    .language-select {
+        margin-right: 15px;
+        margin-left: 0;
+    }
+}
+
+/* Responsive Design */
+
+/* Mobile screens */
+@media (max-width: 576px) {
+    .navbar-nav {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .nav-link {
+        padding: 15px 0;
+        font-size: 1.5em;
+    }
+
+    .btn-primary {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* RTL: Adjust text alignment for mobile */
+    .lang-ar .navbar-nav {
+        text-align: center;
+    }
+}
+
+/* Tablet screens */
+@media (min-width: 576px) and (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .nav-link {
+        padding: 15px 20px;
+        font-size: 1.2em;
+    }
+
+    .btn-primary {
+        width: auto;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .language-select {
+        margin: 10px auto;
+        display: block;
+        width: 100%;
+    }
+
+    /* RTL: Adjust language select for mobile */
+    .lang-ar .language-select {
+        margin: 10px auto;
+    }
+}

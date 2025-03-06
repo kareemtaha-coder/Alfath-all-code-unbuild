@@ -1,0 +1,20 @@
+<section class="blogs py-5">
+    <div class="container">
+      <!-- Heading -->
+      <h2 class="text-center mb-4">Our Latest Blog Posts</h2>
+  
+      <!-- Blog Grid -->
+      <div class="row">
+        <!-- Blog Post 1 -->
+        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let blog of blogs">
+          <div class="blog-card bg-light border rounded shadow-sm p-3">
+            <img [src]="imagUrl+blog.imageName"  loading="lazy" alt="Blog Post 1" class="img-fluid rounded mb-3">
+            <h4 class="blog-title">{{blog.title}}</h4>
+            <p class="blog-excerpt" [innerHTML]="getFirstWords(blog.content, 10)"></p>
+            <a href="/blog/1" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

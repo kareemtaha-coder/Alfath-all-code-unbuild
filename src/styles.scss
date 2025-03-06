@@ -1,0 +1,176 @@
+// Font imports
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
+
+// Arabic font import (example)
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap');
+
+// Color Variables
+$primary-color: #143759;
+$secondary-color: #175b79;
+$accent-color: #ff6600;
+$background-color: #f9fafc;
+$text-color: #333;
+
+// Font Variables
+$font-family-primary: 'Inter', sans-serif;
+$font-family-fun: "Hind", sans-serif;
+$font-family-arabic: "IBM Plex Sans Arabic", sans-serif !important;
+
+// Button Variables
+$btn-border-radius: 50px;
+$btn-padding: 10px 20px;
+
+// Smooth Scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Global Styles
+body {
+  font-family: $font-family-primary;
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+// Language-specific styles
+body.lang-ar {
+  font-family: $font-family-arabic;
+  direction: rtl;
+}
+
+// Links
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: darken($primary-color, 10%);
+  }
+}
+
+// Buttons
+.btn {
+  font-family: $font-family-primary;
+  border-radius: $btn-border-radius;
+  padding: $btn-padding;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+
+  &.btn-primary {
+    background-color: $primary-color;
+    border: none;
+    color: #fff;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      transform: scale(1.05);
+    }
+  }
+
+  &.btn-outline-primary {
+    background-color: transparent;
+    border: 2px solid $primary-color;
+    color: $primary-color;
+
+    &:hover {
+      background-color: $primary-color;
+      color: #fff;
+    }
+  }
+
+  &.btn-rounded {
+    border-radius: 50px;
+  }
+}
+
+// Quote styles
+.quote {
+  padding: 5px 20px;
+  margin: 10px 20px;
+  border-left: 4px solid $primary-color;
+  color: $secondary-color;
+
+  .lang-ar & {
+    border-left: none !important;
+    border-right: 4px solid $primary-color;
+  }
+}
+
+@media (max-width: 867px) {
+  .quote {
+    padding: 5px 5px;
+    margin: 10px 10px;
+    font-size: 14px;
+  }
+}
+
+// International Telephone Input styles
+.iti {
+  display: block !important;
+  margin-bottom: 20px;
+
+  .dropdown-menu.country-dropdown {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-color: #c7cace;
+    margin-top: -1px;
+  }
+
+  .iti__country-list {
+    box-shadow: none;
+    font-size: 14px;
+    margin-left: 0;
+    max-height: 170px;
+  }
+
+  &__flag-container.open + input {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .search-container input {
+    font-size: 14px;
+    border-color: #c7cace;
+    border-radius: 0;
+    padding: 5px 10px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+ngx-intl-tel-input input {
+  height: 55px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #c7cace;
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+// RTL specific adjustments
+.lang-ar {
+  .iti {
+    direction: ltr;
+    text-align: right;
+  }
+
+  .btn {
+    font-family: $font-family-arabic;
+  }
+
+  // Add more RTL specific styles here
+}
+
+@media screen and (max-width: 479px) {
+  .iti .iti__country-list {
+    width: 80.3vw;
+  }
+}

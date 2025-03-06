@@ -1,0 +1,143 @@
+
+@import '../../../styles.scss';
+//=======================================================================//
+.features-institute-section {
+    border-radius: 20px;
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.features-institute-section h2 {
+    color: $secondary-color; /* Bright, engaging color */
+    margin-bottom: 30px;
+    animation: bounceIn 1s ease-in-out;
+}
+
+.img-fluid {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 20px;
+}
+
+.feature-card {
+    background: #fff; /* Soft background color */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.feature-icon img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    animation: spin 4s linear infinite;
+}
+
+.feature-card h3 {
+    font-size: 1.5em;
+    margin: 15px 0;
+    color: $secondary-color; /* Matching color theme */
+}
+
+.feature-card p {
+    font-size: 1em;
+}
+
+.accordion-button {
+    background-color:  $primary-color; /* Soft, playful color */
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: $secondary-color; /* Slightly darker color when active */
+    color: #fff;
+}
+
+.accordion-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.accordion-body {
+    background-color: #fff3e0; /* Light background for text */
+    color: #333;
+    font-size: 1em;
+}
+
+@keyframes bounceIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .features-institute-section {
+        padding: 40px 15px;
+    }
+
+    .img-fluid {
+        max-width: 250px;
+    }
+
+    .feature-card h3 {
+        font-size: 1.3em;
+    }
+
+    .feature-card p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 576px) {
+    .features-institute-section {
+        padding: 20px 10px;
+    }
+
+    .img-fluid {
+        max-width: 200px;
+    }
+
+    .feature-card h3 {
+        font-size: 1.2em;
+    }
+
+    .feature-card p {
+        font-size: 0.8em;
+    }
+
+    .accordion-icon img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+

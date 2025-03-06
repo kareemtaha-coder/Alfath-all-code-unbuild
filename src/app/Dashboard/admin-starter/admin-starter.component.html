@@ -1,0 +1,67 @@
+<!-- 
+
+<div class="main-container">
+    <div class="cards container">
+      <a routerLink="/admin-contacts">
+        <div class="card card-1">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <h2 class="card__title">Contacts.</h2>
+            <p class="card__apply">
+              <a class="card__link" >Apply Now <i class="fas fa-arrow-right"></i></a>
+            </p>
+          </div>
+      </a>
+      <a routerLink="/admin-blogs">
+        <div class="card card-2">
+            <div class="card__icon"><i class="fas fa-bolt"></i></div>
+            <h2 class="card__title">Articles.</h2>
+            <p class="card__apply">
+              <a class="card__link" >Apply Now <i class="fas fa-arrow-right"></i></a>
+            </p>
+          </div>  
+      </a>    
+    </div>
+  </div> -->
+
+  <div class="admin-dashboard">
+    <div class="admin-profile">
+      <div class="admin-img">
+        <img src="../../../assets/images/dashbord__2.jpg" alt="">
+      </div>
+      <div class="admin-profile-content">
+        <h2>Hello</h2>
+      <h2>Al-Fath Admin</h2>
+      </div>
+    </div>
+    <a class="btn"  routerLink="/admin-blogs"> Create New Article &#8594;</a>
+  </div>
+  <div class="card-container  text-center">
+    <div class="card get-contact" routerLink="contacts" routerLinkActive="active-contact">
+      <div class="admin-img">
+        <img src="../../../assets/images/dashbord__2.jpg" alt="">
+      </div>
+      <a class="nav-link" >
+        <i class="bi bi-person-lines-fill"></i> Contacts
+      </a>
+    </div>
+    <div class="card users" routerLink="users"  routerLinkActive="active-users" > 
+      <div class="admin-img">
+        <img src="../../../assets/images/dashbord__2.jpg" alt="">
+      </div>
+    <a class="nav-link" >
+      <i class="bi bi-people"></i> Users
+    </a>
+  </div>
+  <div class="card blogs" routerLink="blogs"  routerLinkActive="active-blogs" > 
+    <div class="admin-img">
+      <img src="../../../assets/images/dashbord__2.jpg" alt="">
+    </div>
+    <a class="nav-link" >
+      <i class="bi bi-people"></i> Blogs
+    </a>
+  </div>
+  </div>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>

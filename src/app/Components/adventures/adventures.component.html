@@ -1,0 +1,15 @@
+<section class="activities py-5">
+    <div class="container">
+      <h2 class="text-center mb-5">{{ 'activities.title' | translate }}</h2>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let card of 'activities.cards' | translate">
+          <div class="activity-card animated bounceIn">
+            <img [src]="card.image" [alt]="card.title" class="img-fluid" />
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.description }}</p>
+            <a href="#" class="btn btn-primary btn-rounded">{{ card.buttonLabel }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

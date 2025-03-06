@@ -1,0 +1,36 @@
+<section class=" py-5 d-flex align-items-center">
+  <div style="width: 100%;"> 
+    <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-sm overflow-hidden">
+      <form [formGroup]="blogForm" (ngSubmit)="onSubmit()" class="p-4">
+        <h1 class="h4 font-weight-bold text-dark mb-4">Add Blog</h1>
+
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" formControlName="title" class="form-control" id="title" placeholder="Enter blog title">
+        </div>
+
+        <div class="mb-3">
+          <label for="content" class="form-label">Content</label>
+          <quill-editor formControlName="content" [modules]="quillModules" class="form-control" id="content"></quill-editor>
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Image</label>
+          <input type="file" formControlName="image" class="form-control" id="image" (change)="onFileChange($event)">
+        </div>
+
+        <div class="mb-3">
+          <label for="videoUrl" class="form-label">Video URL</label>
+          <input type="text" formControlName="videoUrl" class="form-control" id="videoUrl" placeholder="Enter video URL">
+        </div>
+
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <input type="text" formControlName="category" class="form-control" id="category" placeholder="Enter category">
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100" [disabled]="blogForm.invalid">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>

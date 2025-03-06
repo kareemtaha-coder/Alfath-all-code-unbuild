@@ -1,0 +1,105 @@
+<section class="hero text-center py-5" [ngClass]="{ 'lang-ar': translate.currentLang === 'ar' }" animateOnScroll animationName="fadeIn">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-content">
+                <h1 class="display-3 animated bounceIn">
+                    {{ 'hero.welcome' | translate }}
+                </h1>
+                <p class="lead">
+                    {{ 'hero.description' | translate }}
+                </p>
+                <a href="#" class="btn btn-primary btn-lg btn-rounded" data-bs-toggle="modal" data-bs-target="#contactModal" >{{ 'hero.getStarted' | translate }}</a>
+            </div>
+            <div class="col-lg-6 hero-img" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()">
+                <img src="../../../assets/images/landing.png" alt="Fun Learning" class="img-fluid animated bounceIn" [style.transform]="transform" />
+                <!-- Add playful elements like confetti -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="logos-container" [ngClass]="{ 'lang-ar': translate.currentLang === 'ar' }" animateOnScroll animationName="slideInLeft">
+    <div class="logos">
+        <img src="../../../assets/images/brand/brand (1).png" alt="" />
+    </div>
+    <div class="logos">
+        <img src="../../../assets/images/brand/brand (2).png" alt="" />
+    </div>
+    <div class="logos">
+        <img src="../../../assets/images/brand/brand (3).png" alt="" />
+    </div>
+    <div class="logos">
+        <img src="../../../assets/images/brand/brand (4).png" alt="" />
+    </div>
+</div>
+
+<div class="about-container container" [ngClass]="{ 'lang-ar': translate.currentLang === 'ar' }">
+    <section class="about-us container d-flex">
+        <div class="about-img hero-img" (mousemove)="onMouseMove($event)" (mouseleave)="onMouseLeave()">
+            <img src="../../../assets/images/Screenshot 2024-09-16 140217.png" alt="" [style.transform]="transform" />
+            <div class="qoute img-qoute">
+                <span>25+</span>
+                <p>{{ 'hero.experience' | translate }}</p>
+            </div>
+        </div>
+        <div class="about-content">
+            <span class="about-span">{{ 'hero.aboutUs' | translate }}</span>
+            <h2>
+                {{ 'hero.aboutWelcome' | translate }}
+            </h2>
+            <div class="qoute">
+                <p>{{ 'hero.quote' | translate }}</p>
+            </div>
+            <div class="p-icons">
+                <p class="p-icon">
+                    <i class="bi bi-check icon"></i> {{ 'hero.achievement' | translate }}
+                </p>
+                <p class="p-icon">
+                    <i class="bi bi-check icon"></i> {{ 'hero.students' | translate }}
+                </p>
+                <p class="p-icon">
+                    <i class="bi bi-check icon"></i> {{ 'hero.instructors' | translate }}
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="container mt-5 mb-5 m-auto" [ngClass]="{ 'lang-ar': translate.currentLang === 'ar' }">
+    <div class="row text-center" style="min-height: 210px;">
+        <div class="col-md-3 counter">
+            <i class="bi bi-award"></i>
+            <div class="counter-content">
+                <h2><span class="counter-value" data-target="27">0</span>+</h2>
+                <p>{{ 'hero.achievement' | translate }}</p>
+            </div>
+        </div>
+        <div class="col-md-3 counter">
+            <i class="bi bi-mortarboard"></i>
+            <div class="counter-content">
+                <h2><span class="counter-value" data-target="145">0</span>+</h2>
+                <p>{{ 'hero.students' | translate }}</p>
+            </div>
+        </div>
+        <div class="col-md-3 counter">
+            <i class="bi bi-person"></i>
+            <div class="counter-content">
+                <h2><span class="counter-value" data-target="10000">0</span></h2>
+                <p>{{ 'hero.instructors' | translate }}</p>
+            </div>
+        </div>
+        <div class="col-md-3 counter">
+            <i class="bi bi-globe"></i>
+            <div class="counter-content">
+                <h2><span class="counter-value" data-target="214">0</span>+</h2>
+                <p>{{ 'hero.world' | translate }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="contact-button" [ngClass]="{ 'lang-ar': translate.currentLang === 'ar' }">
+    <button class="btn" data-bs-toggle="modal" data-bs-target="#contactModal">
+        <span class="btn-content">{{ 'hero.contactUs' | translate }}</span>
+    </button>
+</div>

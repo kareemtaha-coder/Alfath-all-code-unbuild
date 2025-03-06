@@ -1,0 +1,22 @@
+<section class=" text-white font-futuristic cyberpunk-grid">
+  <main class="container px-4 py-5">
+      <h1 class="display-1 fw-black text-center mb-5 glitch-effect" data-text="Our Creative Blogs">Our Creative Blogs</h1>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+         
+
+          <!-- Blog Post 1 -->
+          <div class="col" *ngFor="let blog of blogs">
+              <div class="card bg-dark text-white border-0 shadow-lg h-100">
+                  <img [src]="imagUrl+blog.imageName" class="card-img-top" alt="Blog post image">
+                  <div class="card-body">
+                      <h2 class="fs-4 fw-bold">{{blog.title}}</h2>
+                      <p class="text-light" [innerHTML]="getFirstWords(blog.content, 7)"></p>
+                      <a href="#" class="text-primary text-decoration-none" [routerLink]="['/blog/',blog.id]" routerLinkActive="router-link-active">Explore →</a>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </main>
+  </section>

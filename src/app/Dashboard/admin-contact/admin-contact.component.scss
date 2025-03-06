@@ -1,0 +1,272 @@
+@import "../../../styles.scss";
+
+// Variables
+$secondary-color: #2ecc71;
+$danger-color: #e74c3c;
+$background-color: #f8f9fa;
+$text-color: #2c3e50;
+$border-color: #e9ecef;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition {
+  transition: all 0.3s ease;
+}
+
+@mixin box-shadow($shadow...) {
+  box-shadow: $shadow;
+}
+
+// Component Styles
+.contact-section {
+  padding: 2.5rem;
+  background-color: $background-color;
+  border-radius: 1rem;
+  @include box-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
+  @include transition;
+
+  &:hover {
+    @include box-shadow(0 15px 40px rgba(0, 0, 0, 0.15));
+  }
+}
+
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $border-color;
+
+  h2 {
+    font-size: 2.25rem;
+    color: $text-color;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.view-toggle {
+  display: flex;
+  background-color: $border-color;
+  border-radius: 2rem;
+  padding: 0.25rem;
+  @include box-shadow(inset 0 2px 4px rgba(0, 0, 0, 0.1));
+  margin-right: 1rem;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem;
+  border-radius: 50%;
+  @include transition;
+  @include flex-center;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    @include transition;
+  }
+
+  &:hover {
+    background-color: rgba($primary-color, 0.1);
+  }
+
+  &.active {
+    background-color: $primary-color;
+    color: white;
+    @include box-shadow(0 4px 6px rgba($primary-color, 0.3));
+
+    svg {
+      fill: white;
+    }
+  }
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.contact-item {
+  background-color: white;
+  border-radius: 1rem;
+  @include box-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+  @include transition;
+  overflow: hidden;
+  border: 1px solid $border-color;
+
+
+  &:hover {
+    transform: translateY(-10px);
+    @include box-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+  }
+}
+
+.contact-item-header {
+  background-color: $primary-color;
+  padding: 1.25rem 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-item-body {
+  padding: 1.75rem;
+
+  p {
+    margin: 1rem 0;
+    color: $text-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+  }
+}
+
+.label {
+  font-weight: 600;
+  color: $text-color;
+}
+
+.status-toggle {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  @include transition;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.contacted {
+    background-color: $secondary-color;
+    color: white;
+    @include box-shadow(0 4px 6px rgba($secondary-color, 0.3));
+  }
+
+  &.not-contacted {
+    background-color: $danger-color;
+    color: white;
+    @include box-shadow(0 4px 6px rgba($danger-color, 0.3));
+  }
+
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-3px);
+    @include box-shadow(0 6px 8px rgba(0, 0, 0, 0.2));
+  }
+}
+
+.contact-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.75rem;
+
+  th, td {
+    padding: 1.25rem;
+    text-align: left;
+  }
+
+  th {
+    background-color: $primary-color;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  tr {
+    background-color: white;
+    @include box-shadow(0 5px 15px rgba(0, 0, 0, 0.1));
+    @include transition;
+
+    &:hover {
+      transform: translateY(-5px);
+      @include box-shadow(0 8px 20px rgba(0, 0, 0, 0.15));
+    }
+  }
+}
+
+// Media Queries
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 1.5rem;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .view-toggle {
+      margin-top: 1rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+    }
+  }
+
+  .contact-table {
+    th, td {
+      padding: 1rem 0.5rem;
+    }
+  }
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+
+  button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    @include transition;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+
+    &:disabled {
+      background-color: lighten($primary-color, 20%);
+      cursor: not-allowed;
+    }
+  }
+
+  span {
+    margin: 0 1rem;
+    font-weight: bold;
+  }
+}

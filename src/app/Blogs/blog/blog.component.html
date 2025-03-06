@@ -1,0 +1,25 @@
+<div class="main-blog" [ngStyle]="{'direction': blog!.language === 'Arabic' ? 'rtl' : 'ltr'}">
+  <main>
+    <article class="container">
+      <header class="container text-center py-5">
+        <p class="text-muted">Published April 4, 2022</p>
+        <h1 class="mt-2 display-4 font-weight-bold p-5">{{blog.title}}</h1>
+        <img class="img-fluid mt-4" [src]="imageUrl+blog.imageName" alt="Featured Image">
+      </header>
+  
+      <div class="container mt-5" [innerHTML]="blog.content"></div>
+      <div class="video-container" [innerHTML]="safeVideoUrl"></div>
+    </article>
+  </main>
+  
+  <div class="container text-center mt-5">
+    <div class="d-inline-block bg-dark" style="width: 2px; height: 1px;"></div>
+    <div class="d-inline-block bg-dark" style="width: 100px; height: 1px;"></div>
+    <div class="d-inline-block bg-dark" style="width: 2px; height: 1px;"></div>
+  </div>
+  
+  <aside aria-label="Related Articles" class="container py-5">
+    <app-blog-section></app-blog-section>
+  </aside>
+  
+</div>

@@ -1,0 +1,27 @@
+<div class="video-playlist-container container my-5">
+  <h2 style="text-align: center; padding: 20px">{{ 'VIDEO_PLAYLIST.TITLE' | translate }}</h2>
+    <div class="row">
+      <div class="col-lg-4 mb-4 playlist-column">
+        <div class="list-group">
+          <a
+            *ngFor="let video of videos"
+            class="list-group-item list-group-item-action"
+            [ngClass]="{ active: currentVideo === video.url }"
+            (click)="changeVideo(video.url)"
+          >
+            <i class="fas fa-play-circle mr-2"></i> {{ video.title}}
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-8 mb-4">
+        <div class="video-container">
+          <iframe
+            class="embed-responsive-item"
+            [src]="sanitizedVideoUrl(currentVideo)"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>

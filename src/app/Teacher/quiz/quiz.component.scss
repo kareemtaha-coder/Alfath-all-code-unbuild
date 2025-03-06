@@ -1,0 +1,14 @@
+.quiz-container {
+    margin: 50px auto;
+    width: 60%;
+    text-align: center;
+  }
+  
+  .list-group-item {
+    cursor: pointer;
+  }
+  
+  .list-group-item.active {
+    background-color: #007bff;
+    color: white;
+  }

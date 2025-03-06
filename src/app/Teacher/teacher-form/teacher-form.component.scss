@@ -1,0 +1,192 @@
+@import '../../../styles.scss';
+::ng-deep body{
+  background-image: url(../../../assets/images/effect.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: $primary-color;
+  color: #f8f9fa;
+}
+/* General Styles */
+// .container {
+//     max-width: 900px;
+//     margin: 0 auto;
+//     padding: 20px;
+//   }
+  
+ /* Form Container */
+ .hiring{
+  min-height: 55vh;
+ }
+form {
+  background: linear-gradient(135deg, #f9f9f9, #ffffff);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+form:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Form Heading */
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Form Labels */
+.form-label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+  transition: color 0.3s;
+}
+
+.form-label:hover {
+  color: $primary-color;
+}
+
+/* Input Fields */
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 12px;
+  width: 100%;
+  font-size: 14px;
+  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: $primary-color;
+  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+  outline: none;
+  transform: scale(1.02); /* Subtle animation on focus */
+}
+
+/* Error Messages */
+.text-danger {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
+}
+
+
+.btn-restart{
+  background-color: #f8f9fa !important;
+  color: #000 !important;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  form {
+    padding: 15px;
+  }
+  
+  .form-group {
+    flex-direction: column;
+  }
+}
+
+  
+  /* Quiz Styles */
+  .card {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list-group-item {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .list-group-item:hover {
+    background-color: $primary-color;
+  }
+  
+  .list-group-item[aria-pressed="true"] {
+    background-color: $primary-color;
+    color: white;
+  }
+  
+  /* Progress Bar */
+  .progress {
+    height: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /* Buttons */
+  .btn {
+    transition: transform 0.2s ease;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.3s ease-in;
+  }
+  
+  .fade-out {
+    animation: fadeOut 0.3s ease-out;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+  
+    .btn {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  @media (min-width: 768px) {
+   
+  form{
+    background-color: $primary-color;
+    padding: 30px;
+    border-radius: 10px;
+    color: #f8f9fa;
+  }
+  }
+
+
+  /* Accessibility */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* Loading Spinner */
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+  }

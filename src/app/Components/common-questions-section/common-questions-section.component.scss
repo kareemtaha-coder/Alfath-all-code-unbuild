@@ -1,0 +1,103 @@
+//===================================================================================================================================//
+@import '../../../styles.scss';
+.common-questions {
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .common-questions h2 {
+    color:  $primary-color;
+    margin-bottom: 20px;
+    font-size: 2rem; /* Larger font size for heading */
+  }
+
+  .accordion-button {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-size: 1rem; /* Smaller font size */
+    display: flex;
+    align-items: center;
+  }
+
+  .accordion-button:hover {
+    background-color: $primary-color;
+    transform: scale(1.03);
+    color: #fff;
+  }
+
+  .question-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-button:hover .question-icon {
+    transform: rotate(20deg);
+  }
+
+  .accordion-body {
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem; /* Smaller font size */
+    position: relative;
+  }
+
+  .accordion-detail-img {
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+
+  .accordion-detail-img:hover {
+    transform: scale(1.05);
+  }
+
+  .accordion-button::after {
+    content: '\f078'; /* Font Awesome down arrow */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    background-image: none;
+    color:  $primary-color;
+  }
+
+  .accordion-button:not(.collapsed)::after {
+    content: '\f077'; /* Font Awesome up arrow */
+    background-image: none;
+
+  }
+
+  @media (max-width: 768px) {
+    .accordion-button img {
+      width: 40px;
+      height: 40px;
+    }
+    .common-questions{
+      padding: 0;
+    }
+  }
+
+  /* Optional: Add a subtle background animation */
+  .common-questions::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://via.placeholder.com/600x400'); /* Background pattern or image */
+    background-size: cover;
+    opacity: 0.1;
+    z-index: -1;
+    animation: backgroundMove 10s infinite linear;
+  }
+
+  @keyframes backgroundMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+  }
+
+
+

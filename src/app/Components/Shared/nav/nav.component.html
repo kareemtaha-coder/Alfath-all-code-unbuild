@@ -1,0 +1,40 @@
+<header class="sticky-top bg-light py-3"[ngClass]="{ scrolled: isScrolled, 'lang-ar': translate.currentLang === 'ar' }">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand bounce" href="#" style="width: 100px;height: 45px;">
+                <img src="assets/images/1.png" alt="logo" class="img-fluid" style="width: 123%; height: 100%;position: absolute;" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="fas fa-home"></i> {{ 'navbar.home' | translate }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-book"></i> {{ 'navbar.courses' | translate }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-gamepad"></i> {{ 'navbar.hiring' | translate }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-puzzle-piece"></i> {{ 'navbar.blogs' | translate }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-envelope"></i> {{ 'navbar.contact' | translate }}</a>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-primary btn-rounded" data-bs-toggle="modal" data-bs-target="#contactModal">
+                    <i class="fas fa-user-plus"></i> {{ 'navbar.joinNow' | translate }}
+                </a>
+                <select class="language-select" (change)="changeLanguage($event)">
+                    <option value="en" [selected]="translate.currentLang === 'en'">{{ 'navbar.language.english' | translate }}</option>
+                    <option value="ar" [selected]="translate.currentLang === 'ar'">{{ 'navbar.language.arabic' | translate }}</option>
+                </select>
+            </div>
+        </nav>
+    </div>
+</header>

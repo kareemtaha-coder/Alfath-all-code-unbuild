@@ -1,0 +1,240 @@
+{
+    "navbar": {
+        "home": "Home",
+        "courses": "Courses",
+        "hiring": "Hiring",
+        "blogs": "Blogs",
+        "contact": "Contact",
+        "joinNow": "Join Now",
+        "language": {
+            "english": "🇺🇸 En",
+            "arabic": "🇪🇬 Ar"
+        }
+    },
+    "hero": {
+        "welcome": "Welcome to Al-Fath Learning!",
+        "description": "Dive into interactive courses, enjoy exciting games, and challenge yourself with fun quizzes!",
+        "getStarted": "Get Started",
+        "aboutUs": "About Us",
+        "aboutWelcome": "Welcome to Al-Fath Learning Center",
+        "experience": "25+ YEARS EXPERIENCE JUST ACHIEVED",
+        "quote": "Contrary to popular belief, Lorem Ipsum is not simply random text roots in a piece of classical Latin literature from 45 BC.",
+        "achievement": "Total Achievement",
+        "students": "Total Students",
+        "instructors": "Total Instructors",
+        "world": "Over the World",
+        "contactUs": "Contact Us"
+    },
+
+    "registration": {
+        "tag": "Registration",
+        "title": "Register Your Account Get free access to",
+        "coursesCount": "60000",
+        "coursesText": "online course",
+        "subtitle": "Learn Something new & Build Your Career From Anywhere In The World",
+        "videoHint": {
+          "title": "Watch Intro Video",
+          "subtitle": "Learn more about our courses"
+        },
+        "form": {
+          "title": "Fill Your Registration",
+          "firstName": {
+            "placeholder": "First Name",
+            "error": "First Name is required and must be at least 2 characters long."
+          },
+          "lastName": {
+            "placeholder": "Last Name",
+            "error": "Last Name is required and must be at least 2 characters long."
+          },
+          "phoneNumber": {
+            "error": "Phone Number is required."
+          },
+          "submit": "Sign Up →"
+        }
+      }
+,
+"subject": {
+    "popularSubjectLabel": "Popular Subject",
+    "headerTitle": "Provide IT & Tech Subject For You",
+    "headerSubtitle": "Construction is a general term meaning the art and science to form systems organizations, and comes from Latin Construction is",
+    "headerQuote": "Construction is a general term meaning the art and science to form systems organizations, and comes from Latin construction and Old",
+    "exploreButton": "Explore More →",
+    "subjectCards": [
+      {
+        "icon": "📊",
+        "title": "Business Studies",
+        "description": "Construction is a general term the art and science to form"
+      },
+      {
+        "icon": "🎨",
+        "title": "Artist & Design",
+        "description": "Construction is a general term the art and science to form"
+      },
+      {
+        "icon": "📚",
+        "title": "Machine Learning",
+        "description": "Construction is a general term the art and science to form"
+      },
+      {
+        "icon": "🎨",
+        "title": "Artist & Design",
+        "description": "Construction is a general term the art and science to form"
+      }
+    ],
+    "viewSubjectLink": "View Subject →"
+  },
+    "activities": {
+    "title": "Explore Our Adventures",
+    "cards": [
+      {
+        "image": "../../../../assets/images/hero.png",
+        "title": "Courses",
+        "description": "Learn with fun and interactive courses!",
+        "buttonLabel": "Explore Courses"
+      },
+      {
+        "image": "assets/images/hero.png",
+        "title": "Games",
+        "description": "Play exciting and educational games!",
+        "buttonLabel": "Play Games"
+      },
+      {
+        "image": "assets/images/hero.png",
+        "title": "Quizzes",
+        "description": "Test your knowledge with fun quizzes!",
+        "buttonLabel": "Take Quizzes"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What Parents Say About Us",
+    "popularSubjectLabel": "Popular Subject",
+    "headerTitle": "Provide IT & Tech Subject For You",
+    "headerSubtitle": "Construction is a general term meaning the art and science to form systems organizations, and comes from Latin Construction is",
+    "headerQuote": "Construction is a general term meaning the art and science to form systems organizations, and comes from Latin construction and Old",
+    "exploreButton": "Contact To Show More →"
+  },
+  "features": {
+    "imageUrl": "assets/images/hero.png",
+    "imageAlt": "Fun Learning",
+    "title": "Why Kids and Parents Love Us?",
+    "mainFeatureIcon": "assets/images/hero.png",
+    "mainFeatureTitle": "Interactive Learning",
+    "mainFeatureDescription": "Our courses are designed to be engaging and interactive, making learning fun!",
+    "accordionFeatures": [
+      {
+        "headingId": "headingOne",
+        "collapseId": "collapseOne",
+        "iconUrl": "assets/images/hero.png",
+        "title": "Expert Instructors",
+        "description": "Learn from the best with our experienced and friendly instructors."
+      },
+      {
+        "headingId": "headingTwo",
+        "collapseId": "collapseTwo",
+        "iconUrl": "assets/images/hero.png",
+        "title": "Fun Activities",
+        "description": "Enjoy a variety of fun activities that make learning enjoyable."
+      }
+    ]
+  },
+  "ourTeam": {
+    "title": "Meet Our Team",
+    "members": [
+      {
+        "photoUrl": "../../../../assets/images/hero.png",
+        "name": "John Doe",
+        "role": "Chief Fun Officer",
+        "description": "John loves creating exciting learning experiences for kids. His passion for education makes him the perfect leader for our team!"
+      },
+      {
+        "photoUrl": "../../../../assets/images/hero.png",
+        "name": "Jane Smith",
+        "role": "Creative Genius",
+        "description": "Jane brings creativity and innovation to our projects, making learning fun and engaging for every child."
+      },
+      {
+        "photoUrl": "../../../../assets/images/hero.png",
+        "name": "Sam Brown",
+        "role": "Tech Wizard",
+        "description": "Sam's expertise in technology ensures that our platform runs smoothly and is always up to date with the latest trends."
+      }
+    ]
+  },
+  "VIDEO_PLAYLIST": {
+    "TITLE": "Check our Sessions"
+  },
+  "COMMON_QUESTIONS": {
+    "TITLE": "Common Questions",
+    "FIRST": {
+      "TITLE": "What is the purpose of this website?",
+      "CONTENT": "This website aims to provide engaging and educational content for kids, helping them learn and have fun at the same time.",
+      "ICON_ALT": "Question Icon",
+      "IMAGE_ALT": "Educational Image"
+    },
+    "SECOND": {
+      "TITLE": "How can I sign up?",
+      "CONTENT": "To sign up, simply click on the 'Register' button on the top right corner of the page and follow the instructions.",
+      "ICON_ALT": "Question Icon",
+      "IMAGE_ALT": "Signup Image"
+    },
+    "THIRD": {
+      "TITLE": "Are there any subscription fees?",
+      "CONTENT": "We offer a range of free content, with additional premium features available through a subscription plan.",
+      "ICON_ALT": "Question Icon",
+      "IMAGE_ALT": "Subscription Image"
+    }
+  },
+  "HIRING": {
+    "LOADING": "Loading...",
+    "FIELD_SELECTION": {
+      "TITLE": "Select Your Field of Expertise",
+      "LABEL": "Choose a Field:",
+      "PLACEHOLDER": "-- Select a Field --"
+    },
+    "TEACHER_FORM": {
+      "TITLE": "Teacher Information",
+      "NAME": {
+        "LABEL": "Full Name",
+        "ERROR": "Name is required (minimum 2 characters)."
+      },
+      "EDUCATION": {
+        "LABEL": "Education",
+        "ERROR": "Education information is required."
+      },
+      "PHONE": {
+        "LABEL": "Phone Number",
+        "ERROR": "Please enter a valid 11-digit phone number."
+      }
+    }
+  },
+  "TEACHER_FORM": {
+    "NATIONAL_ID": {
+      "LABEL": "National ID",
+      "ERROR": "Please enter a valid 14-digit National ID."
+    },
+    "YEARS_OF_EXPERIENCE": {
+      "LABEL": "Years of Experience",
+      "ERROR": "Please enter a valid number of years (0-50)."
+    },
+    "DATE_OF_BIRTH": {
+      "LABEL": "Date of Birth",
+      "ERROR": "Please enter a valid date of birth (age must be between 18 and 65)."
+    },
+    "START_QUIZ_BUTTON": "Start Quiz",
+    "RESELECT_FIELD_BUTTON": "Reselect Field"
+  },
+  "QUIZ_RESULTS": {
+    "TITLE": "Quiz Results",
+    "PROMPT": "You have completed the quiz. Click 'Submit Results' to proceed.",
+    "RESTART_BUTTON": "Restart Quiz",
+    "RESELECT_FIELD_BUTTON": "Reselect Field",
+    "SUBMIT_BUTTON": "Submit Results"
+  },
+  "SUBMISSION_CONFIRMATION": {
+    "TITLE": "Thank You!",
+    "MESSAGE": "Your information and quiz results have been submitted successfully.",
+    "SCORE": "Final Score: {{ score }} / {{ total }}"
+  }
+
+}

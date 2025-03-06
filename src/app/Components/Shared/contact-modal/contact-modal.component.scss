@@ -1,0 +1,164 @@
+@import '../../..../../../../styles.scss';
+// Define SCSS variables
+$error-color: #ef4444;
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+
+
+@media (max-width: 576px) {
+  .modal-dialog {
+    max-width: 95%;
+    margin: 1rem auto;
+  }
+}
+
+.modal-content {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+
+}
+.modal{
+    z-index: 111111111;
+}
+.modal-header {
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  color: white;
+  border-bottom: none;
+  padding: 2rem;
+}
+
+.modal-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.modal-body {
+  padding: 2rem;
+  background-color: white;
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: $text-color;
+}
+
+.form-control, .form-select {
+  border-radius: 10px;
+  border: 2px solid #e5e7eb;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: $accent-color;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+}
+
+.text-danger {
+  color: $error-color !important;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.modal-footer {
+  border-top: none;
+  padding: 1rem 2rem 2rem;
+  background-color: white;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, $primary-color, $secondary-color);
+  border: none;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+  background: linear-gradient(135deg, $secondary-color, $primary-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  border: none;
+  color: $text-color;
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: #d1d5db;
+  color: $text-color;
+}
+
+.form-floating > label {
+  padding: 1rem;
+  color: #6b7280;
+}
+
+.form-floating > .form-control,
+.form-floating > .form-select {
+  height: calc(3.5rem + 2px);
+  line-height: 1.25;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select ~ label {
+  opacity: 0.65;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+  color: $primary-color;
+}
+
+.input-group-text {
+  background-color: #e5e7eb;
+  border: none;
+  border-radius: 10px 0 0 10px;
+}
+
+.form-control.with-icon {
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+}
+
+.icon-input {
+  color: $primary-color;
+  font-size: 1.2rem;
+}
+
+/* Notification */
+.alert {
+  position: fixed;
+  top: 50px;
+  right: 30px;
+  padding: 20px;
+  border-radius: 4px;
+  z-index: 100000000000;
+  transition: opacity 0.5s ease-in-out;
+  max-width: 400px;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+}

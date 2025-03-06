@@ -1,0 +1,123 @@
+@import '../../../styles.scss';
+::ng-deep body{
+	background-color: $primary-color !important;
+}
+.admin-dashboard{
+	background-color: $secondary-color;
+	display: flex;
+	justify-content: space-between;
+	padding: 2rem 3rem;
+	margin: 30px 30px;
+	align-items: center;
+	border-radius: .75rem;
+	flex-wrap: wrap;
+	line-height: 1.8;
+	color: #fff;
+	gap: 1.5rem;
+}
+.admin-profile{
+	display: flex;
+	align-items: center;
+	gap: 1.25rem;
+}
+.admin-img{
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	overflow: hidden;
+	border: 3px solid #e5e7eb;
+	box-sizing: border-box;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+.admin-img img{
+	width: 95%;
+	height: 95%;
+	border-radius: 50%;
+	border: 3px solid #e5e7eb;
+
+}
+.btn{
+	color: #fff;
+	font-size: 20px;
+	font-weight: 600;
+	padding: 1rem 2rem;
+	border: 3px solid #e5e7eb;
+}
+.btn:hover{
+	background-color: $accent-color;
+}
+
+
+.card-container{
+	background-color: #e5e7eb;
+	display: flex;
+	justify-content: space-evenly;
+	padding: 1.5rem;
+	margin: 30px 30px;
+	align-items: center;
+	border-radius: .5rem;
+	flex-wrap: wrap;
+	line-height: 1.8;
+	color: #fff;
+	gap: 1.5rem;
+}
+.card{
+	width: 30%;
+	padding:15px 20px ;
+	color: #e5e7eb !important;
+	font-size: 1.75rem;
+	transition: .4s all;
+	display: flex;
+	align-items: center;
+
+}
+.card .admin-img{
+	width: 80px;
+	height: 80px;
+}
+.get-contact:hover ,.active-contact{
+	background-color: $primary-color;
+
+}
+.users:hover ,.active-users{
+	background-color: $accent-color;
+
+}
+.card:hover a , .active-contact a ,.active-users a ,.active-blogs a{
+	color: #e5e7eb !important;
+}
+
+.active-blogs , .blogs:hover{
+	background-color: $secondary-color;
+}
+
+
+@media (max-width: 770px) {
+	.admin-dashboard{
+		justify-content: center;
+		margin: 10px auto;
+		border-radius: .5rem;
+
+	}
+	.admin-img{
+		width: 80px;
+		height: 80px;
+	}
+	.card-container{
+		flex-direction: column;
+		width: 100%;
+		margin: 10px auto;
+		gap: 1rem;
+	}
+	.card{
+		width: 100%;
+	}
+	.btn{
+		font-size: 16px;
+	}
+	h2{
+		font-size: 17px;
+	}
+}
