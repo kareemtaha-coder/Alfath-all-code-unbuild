@@ -1,0 +1,327 @@
+// Enhanced SCSS Styling
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "../../../styles.scss";
+// Variables
+$text-primary: #2D3436;
+$text-secondary: #636E72;
+$background-light: #F5F6FA;
+$gradient-primary: linear-gradient(135deg, $primary-color, darken($primary-color, 15%));
+
+
+// Mixins
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Progress Bar
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: $gradient-primary;
+  z-index: 1000;
+  
+  .progress-glow {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 20px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+    animation: glow 1.5s infinite;
+  }
+}
+/* Hero Section */
+* {
+  margin: 0;
+  border: 0;
+}
+.hero {
+  background-color: $primary-color; /* Primary color for background */
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  // height: 90vh; /* Increased height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 70px;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  line-height: 1.8;
+  font-family: "Inter", sans-serif;
+  min-height: 80vh;
+}
+
+.hero-content {
+  text-align: start;
+}
+.hero h1 {
+  font-size: 3.5rem; /* Larger font size for the heading */
+  font-weight: bolder;
+  margin-bottom: 20px;
+  // animation: bounce 2s infinite; /* Added bounce animation */
+}
+.hero span {
+  color: #ff6600;
+}
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+.hero-img {
+  perspective: 1000px; /* Defines the 3D perspective */
+}
+.hero-img img {
+  transition: transform 0.5s ease;
+  transform-origin: center; /* Ensures the image rotates from the center */
+}
+.hero-img:hover img {
+  transform: rotateY(20deg) rotateX(10deg) skewX(10deg) skewY(5deg);
+}
+
+.hero .btn-primary {
+  background-color: $secondary-color; /* Playful button color */
+  border: none;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  border: solid 4px #fff;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero .btn-primary:hover {
+  background-color: #ff6600; /* Darker shade for hover */
+  transform: scale(1.1);
+}
+
+.login-link {
+  font-size: 20px;
+  margin-left: 20px;
+  padding: 0;
+  position: relative;
+  top: 3px;
+}
+
+//Logos Container
+.logos-container {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  border-radius: 20px;
+  position: relative;
+  top: -100px;
+  background-color: #fff;
+  box-shadow: 0 20px 10px rgba(95, 45, 237, 0.05);
+  overflow: hidden;
+  text-align: center;
+}
+.logos img {
+  width: 80%;
+  transition: all 1s;
+}
+.logos:hover {
+  background-color: #eee;
+}
+
+// Features Section
+.features-section {
+  padding: 6rem 2rem;
+  background: $background-light;
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .feature-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    @include card-hover;
+    
+    .feature-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      background: $gradient-primary;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1.5rem;
+      
+      i {
+        font-size: 1.5rem;
+        color: white;
+      }
+    }
+  }
+}
+
+// Objectives Section
+.objectives-section {
+  padding: 6rem 2rem;
+
+  .objectives-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .objective-card {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    @include card-hover;
+    
+    .objective-number {
+      width: 50px;
+      height: 50px;
+      background: $gradient-primary;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 600;
+    }
+    
+    .objective-content {
+      flex: 1;
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+  }
+}
+
+// CTA Section
+.cta-section {
+  padding: 6rem 2rem;
+  background: $gradient-primary;
+  text-align: center;
+  color: white;
+
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+// Button Styles
+.primary-button {
+  background: $secondary-color;
+  color: $text-primary;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    
+    .button-icon {
+      transform: translateX(5px);
+    }
+  }
+  
+  .button-icon {
+    transition: transform 0.3s ease;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .hero-section {
+    .hero-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .feature-card {
+    text-align: center;
+    
+    .feature-icon-wrapper {
+      margin: 0 auto 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .hero .btn-primary {
+    font-size: 1rem;
+    padding: 7px 14px;
+  }
+  .hero {
+    margin: 5px 5px;
+  }
+  .hero-content {
+    padding: 50px 10px;
+    text-align: center;
+  }
+  
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    font-size: 1.4rem;
+  }
+
+  .hero .btn-primary {
+    font-size: 1.1rem;
+    padding: 12px 24px;
+  }
+
+  .hero {
+    margin: 10px 20px;
+  }
+  .hero-content {
+    padding: 50px 0;
+    text-align: center;
+  }
+  
+  .contact-button .btn {
+    font-size: 13px;
+  }
+}
+

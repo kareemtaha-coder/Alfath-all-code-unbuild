@@ -1,0 +1,317 @@
+@import '../../styles.scss';
+
+$secondary-color: $primary-color;
+$background-color: #f9f9f9;
+$text-color: #333;
+$border-radius: 8px;
+$transition-duration: 0.3s;
+
+// Enhanced variables
+$background-light: #f8f9fa;
+$card-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+$transition-standard: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$gradient-primary: linear-gradient(135deg, $primary-color, darken($primary-color, 15%));
+$gradient-accent: linear-gradient(135deg, $secondary-color, darken($secondary-color, 15%));
+
+// Responsive breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Mixins for reusability
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card-hover {
+  transition: $transition-standard;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $card-shadow;
+  }
+}
+
+// Global styles
+body {
+  background-color: $background-light;
+  color: $text-color;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 14px;
+  }
+}
+
+// Main container
+.sessions-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0.5rem;
+  }
+}
+
+// Main video section
+.main-video {
+  background: white;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: $card-shadow;
+  margin-bottom: 1.5rem;
+
+  .loading-spinner, .loading-more {
+    @include flex-center;
+    flex-direction: column;
+    padding: 1rem;
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba($secondary-color, 0.1);
+      border-left-color: $secondary-color;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    p {
+      margin-top: 0.5rem;
+      color: $secondary-color;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+  }
+
+  .error-message {
+    background-color: #fff5f5;
+    border: 1px solid #feb2b2;
+    color: #c53030;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+
+    i {
+      margin-right: 0.25rem;
+    }
+  }
+
+  .current-session {
+    padding: 1rem;
+
+    @media (max-width: $breakpoint-sm) {
+      padding: 0.75rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: $primary-color;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 1.25rem;
+      }
+
+      i {
+        color: $secondary-color;
+      }
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; // 16:9 aspect ratio
+      height: 0;
+      overflow: hidden;
+      border-radius: $border-radius;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+      iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .description-container {
+      margin-top: 1rem;
+      position: relative;
+
+      p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: rgba($text-color, 0.8);
+        max-height: 4.5em; // 3 lines
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+
+        &.expanded {
+          max-height: none;
+        }
+
+        @media (max-width: $breakpoint-md) {
+          font-size: 0.85rem;
+        }
+      }
+
+      .expand-button {
+        @include flex-center;
+        position: absolute;
+        right: 50%;
+        bottom: -15px;
+        width: 30px;
+        height: 30px;
+        background: $gradient-accent;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: $transition-standard;
+        transform: translateX(50%);
+
+        &:hover {
+          transform: translateX(50%) translateY(-2px);
+          box-shadow: 0 3px 8px rgba($secondary-color, 0.3);
+        }
+
+        i {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
+
+// Session grid
+.session-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1rem;
+
+  @media (max-width: $breakpoint-lg) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+// Session cards
+.session-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  @include card-hover;
+
+  &.active {
+    border: 2px solid $secondary-color;
+    transform: scale(1.02);
+  }
+
+  .card-video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .card-content {
+    padding: 0.75rem;
+
+    @media (max-width: $breakpoint-sm) {
+      padding: 0.5rem;
+    }
+
+    h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+      color: $primary-color;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 0.9rem;
+      }
+
+      i {
+        color: $secondary-color;
+      }
+    }
+
+    p {
+      font-size: 0.8rem;
+      color: rgba($text-color, 0.7);
+      line-height: 1.4;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+// Accessibility and focus styles
+button, [tabindex="0"] {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($secondary-color, 0.5);
+  }
+}
+
+// Additional responsive adjustments
+@media (max-width: $breakpoint-sm) {
+  .main-video {
+    .current-session {
+      h2 {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .session-card {
+    .card-content {
+      h4 {
+        font-size: 0.85rem;
+      }
+
+      p {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  .loading-spinner, .loading-more {
+    .spinner {
+      width: 30px;
+      height: 30px;
+    }
+
+    p {
+      font-size: 0.8rem;
+    }
+  }
+}

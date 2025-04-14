@@ -1,0 +1,569 @@
+$primary-color: #143759;
+$secondary-color: #175b79;
+$accent-color: #ff6600;
+$background-color: #f9fafc;
+$text-color: #333;
+$error-color: #e74c3c;
+$success-color: #2ecc71;
+$warning-color: #f39c12;
+$info-color: #3498db;
+
+// Additional Variables
+$sidebar-width: 260px;
+$sidebar-collapsed-width: 70px;
+$header-height: 70px;
+$border-radius: 12px;
+$card-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+$transition-speed: 0.3s;
+
+// Primary Gradient Variations
+$primary-gradient: linear-gradient(135deg, $primary-color, $secondary-color);
+$accent-gradient: linear-gradient(135deg, $accent-color, darken($accent-color, 10%));
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+}
+
+@mixin card-style {
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $card-shadow;
+}
+
+@mixin hover-effect {
+  transition: all $transition-speed ease;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Base Styles
+body {
+  background-color: $background-color;
+  color: $text-color;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  direction: ltr;
+}
+
+// Dashboard Container
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 0;
+  overflow-x: hidden;
+  margin-top: 25px;
+}
+
+// Email Confirmation Banner
+.email-confirmation-banner {
+  background-color: rgba($warning-color, 0.15);
+  color: darken($warning-color, 20%);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  border-radius: $border-radius;
+  border-left: 4px solid $warning-color;
+
+  .confirmation-content {
+    @include flex-center;
+    gap: 1rem;
+    flex: 1;
+
+    i {
+      font-size: 1.2rem;
+    }
+
+    span {
+      font-weight: 500;
+    }
+  }
+
+  .resend-btn {
+    background-color: rgba($warning-color, 0.2);
+    color: darken($warning-color, 15%);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba($warning-color, 0.3);
+    }
+
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    i {
+      font-size: 1rem;
+    }
+  }
+
+  .close-banner {
+    background: none;
+    border: none;
+    color: darken($warning-color, 20%);
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    margin-left: 1rem;
+
+    &:hover {
+      color: darken($warning-color, 30%);
+    }
+  }
+}
+
+// Admin Header
+.admin-header {
+  @include card-style;
+  height: $header-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin-bottom: 1rem;
+
+  .brand {
+    @include flex-center;
+    gap: 0.5rem;
+
+    .logo {
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      color: white;
+      background: $primary-gradient;
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
+
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+      color: $primary-color;
+    }
+  }
+}
+
+// Admin Profile
+.admin-profile {
+  @include flex-center;
+  gap: 1rem;
+
+  .admin-actions {
+    @include flex-center;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+
+    &.quick-action {
+      background-color: rgba($primary-color, 0.1);
+      color: $primary-color;
+
+      &:hover {
+        background-color: rgba($primary-color, 0.15);
+      }
+    }
+
+    &.create-btn {
+      background: $accent-gradient;
+      color: white;
+      text-decoration: none;
+
+      &:hover {
+        box-shadow: 0 4px 12px rgba($accent-color, 0.3);
+      }
+
+      i {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Profile Dropdown
+.profile-dropdown {
+  position: relative;
+
+  .profile-toggle {
+    background: none;
+    border: none;
+    border-radius: 30px;
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: rgba($primary-color, 0.05);
+    }
+
+    .avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: $primary-gradient;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 600;
+    }
+
+    .role-title {
+      font-weight: 500;
+      color: $text-color;
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 200px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      display: block;
+    }
+
+    .dropdown-item {
+      padding: 0.6rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba($primary-color, 0.05);
+      }
+
+      i {
+        color: $primary-color;
+        font-size: 1.1rem;
+      }
+
+      &.logout {
+        color: $error-color;
+
+        i {
+          color: $error-color;
+        }
+      }
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.1);
+      margin: 0.5rem 0;
+    }
+  }
+}
+
+// Content Wrapper
+.content-wrapper {
+  display: flex;
+  flex: 1;
+  padding: 0 1rem 1rem;
+}
+
+// Sidebar
+.sidebar {
+  width: $sidebar-width;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $card-shadow;
+  transition: width $transition-speed ease;
+  height: calc(100vh - $header-height - 2rem);
+  position: sticky;
+  top: calc($header-height + 1rem);
+  overflow-y: auto;
+  margin-right: 1rem;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($primary-color, 0.2);
+    border-radius: 10px;
+  }
+
+  &.collapsed {
+    width: $sidebar-collapsed-width;
+
+    .sidebar-item {
+      padding: 0.75rem;
+      justify-content: center;
+
+      i {
+        margin-right: 0;
+      }
+
+      .tooltip {
+        position: absolute;
+        left: calc(100% + 10px);
+        background: $primary-color;
+        color: white;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.2s;
+        white-space: nowrap;
+        z-index: 10;
+
+        &:before {
+          content: '';
+          position: absolute;
+          left: -5px;
+          top: 50%;
+          transform: translateY(-50%);
+          border-top: 5px solid transparent;
+          border-bottom: 5px solid transparent;
+          border-right: 5px solid $primary-color;
+        }
+      }
+
+      &:hover .tooltip {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .menu-category {
+      display: none;
+    }
+  }
+}
+
+.sidebar-menu {
+  padding: 1.25rem 0;
+}
+
+.menu-category {
+  padding: 0 1.5rem;
+  margin: 1.5rem 0 0.5rem;
+
+  span {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #8a94a6;
+    letter-spacing: 0.5px;
+  }
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: $text-color;
+  text-decoration: none;
+  position: relative;
+  margin: 0.25rem 0.75rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+
+  i {
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+    min-width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  span {
+    font-weight: 500;
+  }
+
+  &:hover {
+    background-color: rgba($primary-color, 0.05);
+    color: $primary-color;
+  }
+
+  &.active-item {
+    background-color: rgba($primary-color, 0.1);
+    color: $primary-color;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background: $primary-color;
+      border-radius: 0 4px 4px 0;
+    }
+  }
+}
+
+// Main Content
+.content {
+  flex: 1;
+  background: white;
+  border-radius: $border-radius;
+  box-shadow: $card-shadow;
+  padding: 1.5rem;
+  transition: all $transition-speed ease;
+  overflow: auto;
+
+  &.expanded {
+    margin-left: 0;
+  }
+}
+
+// Responsive
+@media (max-width: 992px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    z-index: 99;
+    transform: translateX(0);
+    transition: transform $transition-speed ease, width $transition-speed ease;
+
+    &.collapsed {
+      transform: translateX(-100%);
+    }
+  }
+
+  .content {
+    margin-left: 0 !important;
+  }
+
+  .admin-header {
+    padding: 0 1rem;
+
+    .brand h1 {
+      display: none;
+    }
+  }
+
+  .email-confirmation-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+
+    .confirmation-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .close-banner {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-profile {
+    .admin-actions {
+      gap: 0.5rem;
+    }
+
+    .btn {
+      padding: 0.4rem 0.8rem;
+
+      &.create-btn span {
+        display: none;
+      }
+    }
+
+    .profile-toggle .role-title {
+      display: none;
+    }
+  }
+
+  .email-confirmation-banner {
+    .resend-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-header {
+    height: auto;
+    padding: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .admin-profile {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .content-wrapper {
+    padding: 0 0.5rem 0.5rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+}

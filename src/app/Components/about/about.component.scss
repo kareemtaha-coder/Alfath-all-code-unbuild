@@ -1,0 +1,256 @@
+@import '../../../styles.scss';
+.about-us {
+  background:   $primary-color;
+  padding: 60px 0;
+}
+
+
+
+.carousel-caption {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.carousel-caption h3 {
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 2rem;
+}
+
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-title {
+  color:  $primary-color;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.card-text {
+  color: #333;
+}
+
+.btn-primary {
+  background-color: #ff6f61;
+  border: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #ff4b4b;
+}
+
+.btn-secondary {
+  background-color:  $primary-color;
+  border: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 50px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: #0091ea;
+}
+
+
+
+  .fun-facts-section h2 {
+    font-family: 'Comic Sans MS', cursive;
+    color:  $primary-color;
+    margin-bottom: 2rem;
+  }
+  
+  /* Interactive Wall */
+  .interactive-wall {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .fact-panel {
+    width: 160px;
+    height: 200px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .fact-panel:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .fact-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+  }
+  
+  .fact-title {
+    font-family: 'Comic Sans MS', cursive;
+    color: #333;
+    font-size: 1.2rem;
+  }
+  
+  /* Popup Styles */
+  /* Popup Styles */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 80%; /* Adjusted width */
+    width: 600px; /* Fixed width */
+    text-align: center;
+    position: relative;
+    animation: bounceIn 0.5s ease-out;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .popup-header {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  
+  .popup-header h3 {
+    font-family: 'Comic Sans MS', cursive;
+    color: #ff6600;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .close-btn {
+    background: #ff6600;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    transition: background 0.3s ease;
+  }
+  
+  .close-btn:hover {
+    background: #ff3300;
+  }
+  
+  .popup-body {
+    margin-bottom: 1rem;
+  }
+  
+  .popup-image {
+    width: 180px; /* Increased width */
+    height: 180px; /* Increased height */
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 1rem 0;
+    animation: rotate 5s linear infinite;
+  }
+  
+  .popup-description {
+    font-size: 1rem;
+    color: #555;
+    margin: 1rem 0;
+  }
+  
+  .popup-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .nav-btn {
+    background:  $primary-color;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1.5rem; /* Adjusted padding */
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+  }
+  
+  .nav-btn:hover {
+    background: #007acc;
+  }
+  
+  .prev-btn {
+    margin-right: 0.5rem;
+  }
+  
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @media screen and (max-width:700px) {
+    .carousel-caption {
+  
+      padding: 5px;
+      border-radius: 10px;
+      width: 100%;
+      bottom: 0;
+      font-size: 13px;
+    }
+    img{
+      width: 100% !important;
+    }
+
+  }

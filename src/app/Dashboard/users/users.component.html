@@ -1,0 +1,80 @@
+<section class="user-section">
+  <div class="user-header">
+    <h2>Users</h2>
+    <div class="header-actions">
+      <div class="view-toggle">
+        <button class="icon-btn" [class.active]="isGridView" (click)="toggleView(true)" title="Grid View">
+          <i class="bi bi-grid"></i>
+        </button>
+        <button class="icon-btn" [class.active]="!isGridView" (click)="toggleView(false)" title="List View">
+          <i class="bi bi-list-ul"></i>
+        </button>
+      </div>
+      <button class="icon-btn" (click)="refreshData()" title="Refresh Data" [disabled]="isLoading">
+        <i class="bi bi-arrow-clockwise" [class.rotating]="isLoading"></i>
+      </button>
+      <button class="icon-btn" (click)="downloadExcel()" title="Download Excel">
+        <i class="bi bi-download"></i>
+      </button>
+    </div>
+  </div>
+
+  <div [ngClass]="isGridView ? 'user-grid' : 'user-list'">
+    <ng-container *ngIf="isGridView; else listView">
+      <div *ngFor="let user of displayedUsers; let i = index" class="user-item">
+        <div class="user-item-header">
+          {{ user.firstName }} {{ user.lastName }}
+        </div>
+        <div class="user-item-body">
+          <p><span class="label">Id:</span> <span>{{ i+1 }}</span></p>
+          <p><span class="label">Phone:</span> <span>{{ user.phoneNumber }}</span></p>
+          <p><span class="label">Contacted:</span> <span>{{ user.isContacted ? 'Yes' : 'No' }}</span></p>
+        </div>
+        <div class="user-item-actions">
+          <button class="icon-btn contact-toggle" [class.contacted]="user.isContacted" (click)="toggleUserContact(user)"
+            [title]="user.isContacted ? 'Disable Contact' : 'Enable Contact'">
+            <i class="bi" [ngClass]="user.isContacted ? 'bi-person-check-fill' : 'bi-person-x-fill'"></i>
+          </button>
+
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #listView>
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Id</th>
+            <th>Phone</th>
+            <th>Contacted</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of displayedUsers; let i = index">
+            <td>{{ user.firstName }} {{ user.lastName }}</td>
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td>{{ user.isContacted ? 'Yes' : 'No' }}</td>
+            <td>
+              <button class="icon-btn contact-toggle" [class.contacted]="user.isContacted"
+                (click)="toggleUserContact(user)" [title]="user.isContacted ? 'Disable Contact' : 'Enable Contact'">
+                <i class="bi" [ngClass]="user.isContacted ? 'bi-person-check-fill' : 'bi-person-x-fill'"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </div>
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+  </div>
+</section>

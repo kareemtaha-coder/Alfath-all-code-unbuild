@@ -1,0 +1,87 @@
+<div class="m-lg-5 py-4">
+  <!-- Header with page title -->
+  <div class="mb-4">
+    <h1 class="fw-bold text-dark">Manage your teaching staff efficiently</h1>
+  </div>
+
+  <!-- Navigation tabs -->
+  <div class="card shadow-lg mb-4">
+    <div class="card-body p-0">
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <button type="button" (click)="setActiveTab('hiring')" class="nav-link d-flex align-items-center justify-content-center" [ngClass]="{'active': activeTab === 'hiring'}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="me-2" viewBox="0 0 20 20">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"></path>
+              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"></path>
+            </svg>
+            Hiring Teachers
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" (click)="setActiveTab('create')" class="nav-link d-flex align-items-center justify-content-center" [ngClass]="{'active': activeTab === 'create'}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="me-2" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"></path>
+            </svg>
+            Create Teacher
+          </button>
+        </li>
+        <li class="nav-item">
+          <button type="button" (click)="setActiveTab('manage')" class="nav-link d-flex align-items-center justify-content-center" [ngClass]="{'active': activeTab === 'manage'}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="me-2" viewBox="0 0 20 20">
+              <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
+            </svg>
+            Manage Teachers
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Content area -->
+  <div class="card shadow-lg mb-4">
+    <div class="card-body">
+      <!-- Hiring Teachers Component -->
+      <div *ngIf="activeTab === 'hiring'" class="animate-fade-in">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="h4 text-dark mb-0">Hiring Portal</h2>
+        </div>
+        <div class="p-3 mb-4 border-start border-4 border-primary bg-light">
+          <p class="mb-0 text-primary">Access teacher applications and manage the hiring process</p>
+        </div>
+        <app-admin-teacher></app-admin-teacher>
+
+      </div>
+
+      <!-- Create Teacher Component -->
+      <div *ngIf="activeTab === 'create'" class="animate-fade-in">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+        </div>
+        <div class="p-3 mb-4 border-start border-4 border-warning bg-light">
+          <p class="mb-0 text-warning">Complete all required fields to add a new teacher to the system</p>
+        </div>
+        <app-create-teacher></app-create-teacher>
+      </div>
+
+      <!-- Manage Teachers Component -->
+      <div *ngIf="activeTab === 'manage'" class="animate-fade-in">
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center mb-4">
+          <h2 class="h4 text-dark mb-3 mb-sm-0">Manage Teachers</h2>
+          <div class="d-flex align-items-center">
+            <div class="input-group me-3">
+              <span class="input-group-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-muted" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+              </span>
+              <input type="text" class="form-control" placeholder="Search teachers...">
+            </div>
+          </div>
+        </div>
+        <div class="p-3 mb-4 border-start border-4 bg-light" style="border-color: #6f42c1;">
+          <p class="mb-0" style="color: #6f42c1;">View, edit and manage all teachers in the system</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

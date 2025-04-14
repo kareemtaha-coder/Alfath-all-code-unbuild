@@ -1,0 +1,26 @@
+<div class="container subject-container">
+  <div class="header">
+    <span class="popular-subject-label">{{ 'subject.popularSubjectLabel'|translate }}</span>
+    <h1 class="header-title">{{ 'subject.headerTitle'|translate }}</h1>
+    <p class="header-subtitle">
+      {{ 'subject.headerSubtitle'|translate }}
+    </p>
+    <div class="header-paragraph-container">
+      <p class="header-paragraph quote">
+        {{ 'subject.headerQuote'|translate }}
+      </p>
+    </div>
+    <button class="explore-button" routerLink="/hiring">{{ 'subject.applyButton'|translate}}</button>
+  </div>
+
+  <div class="subject-grid">
+    <div class="subject-card card-offset" *ngFor="let card of 'subject.subjectCards'|translate">
+      <div class="subject-icon">{{ card.icon }}</div>
+      <h2 class="subject-title">{{ card.title }}</h2>
+      <p class="subject-description">
+        {{ card.description }}
+      </p>
+      <a  class="view-subject-link"  routerLink="/hiring">{{ 'subject.viewSubjectLink' |translate }}</a>
+    </div>
+  </div>
+</div>

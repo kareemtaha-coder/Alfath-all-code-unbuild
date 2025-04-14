@@ -1,0 +1,20 @@
+<section class="our-team py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">{{ 'ourTeam.title' | translate }}</h2>
+    <div class="row">
+      <!-- Team Member 1 -->
+      <div class="col-lg-4 col-md-6 mb-4" *ngFor="let member of 'ourTeam.members' | translate">
+        <div class="team-member">
+          <div class="photo-container">
+            <img [src]="member.photoUrl" loading="lazy" [alt]="member.name">
+          </div>
+          <div class="info">
+            <h3 class="name">{{ member.name }}</h3>
+            <p class="role">{{ member.role }}</p>
+            <p class="description">{{ member.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,112 @@
+<section class="contact-section">
+  <div class="contact-header">
+    <h2>Contacts</h2>
+    <div class="header-actions">
+      <div class="view-toggle">
+        <button class="icon-btn" [class.active]="isGridView" (click)="toggleView(true)" title="Grid View">
+          <i class="bi bi-grid-3x3-gap-fill"></i>
+        </button>
+        <button class="icon-btn" [class.active]="!isGridView" (click)="toggleView(false)" title="List View">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+      <button class="icon-btn refresh-btn" (click)="refreshData()" title="Refresh Data" [disabled]="isLoading">
+        <i class="bi bi-arrow-repeat" [class.rotating]="isLoading"></i>
+      </button>
+      <button class="icon-btn download-btn" (click)="downloadExcel()" title="Download All Records">
+        <i class="bi bi-download"></i>
+        All Records
+      </button>
+      <button class="icon-btn download-btn" (click)="downloadDisplayedExcel()" title="Download Current Page">
+        <i class="bi bi-download"></i>
+        Current Page
+      </button>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <ng-container *ngIf="contacts.length === 0">
+    <div class="empty-state">
+      <i class="bi bi-people"></i>
+      <h3>No contacts found</h3>
+      <p>There are no contacts to display. Try refreshing the data or check back later.</p>
+    </div>
+  </ng-container>
+
+  <div [ngClass]="isGridView ? 'contact-grid' : 'contact-list'" *ngIf="contacts.length > 0">
+    <ng-container *ngIf="isGridView; else listView">
+      <div *ngFor="let contact of displayedContacts; let i = index" class="contact-item">
+        <div class="contact-item-header">
+          {{ contact.name }}
+          <button class="status-toggle"
+                  [class.contacted]="contact.isContact"
+                  [class.not-contacted]="!contact.isContact"
+                  (click)="toggleContactStatus(contact)">
+            {{ contact.isContact ? 'Contacted' : 'Not Contacted' }}
+          </button>
+        </div>
+        <div class="contact-item-body">
+          <p><span class="label">ID:</span> <span>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</span></p>
+          <p><span class="label">Children:</span> <span>{{ contact.numberOfChildren }}</span></p>
+          <p><span class="label">Phone:</span> <span>{{ contact.phone }}</span></p>
+          <p><span class="label">Country:</span> <span>{{ contact.country }}</span></p>
+          <p><span class="label">City:</span> <span>{{ contact.city }}</span></p>
+          <p><span class="label">Plan:</span> <span>{{ contact.planChoice }}</span></p>
+          <p><span class="label">Course:</span> <span>{{ contact.course }}</span></p>
+          <p><span class="label">Sent At:</span> <span>{{ contact.sentAt | date:'medium' }}</span></p>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #listView>
+      <table class="contact-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Children</th>
+            <th>Phone</th>
+            <th>Country</th>
+            <th>City</th>
+            <th>Plan</th>
+            <th>Course</th>
+            <th>Sent At</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of displayedContacts; let i = index">
+            <td>{{ contact.name }}</td>
+            <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+            <td>{{ contact.numberOfChildren }}</td>
+            <td>{{ contact.phone }}</td>
+            <td>{{ contact.country }}</td>
+            <td>{{ contact.city }}</td>
+            <td>{{ contact.planChoice }}</td>
+            <td>{{ contact.course }}</td>
+            <td>{{ contact.sentAt | date:'medium' }}</td>
+            <td>
+              <button class="status-toggle"
+                      [class.contacted]="contact.isContact"
+                      [class.not-contacted]="!contact.isContact"
+                      (click)="toggleContactStatus(contact)">
+                {{ contact.isContact ? 'Contacted' : 'Not Contacted' }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="contacts.length > 0">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</section>

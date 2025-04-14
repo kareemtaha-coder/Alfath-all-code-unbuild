@@ -1,0 +1,556 @@
+{
+  "navbar": {
+    "home": "Home",
+    "courses": "Courses",
+    "hiring": "Hiring",
+    "blogs": "Blogs",
+    "videoSection": "Fast Contact",
+    "joinNow": "Join Now",
+    "sessions": "sessions",
+    "hero": "Hero",
+    "coursesSection": "Courses",
+    "adventures": "Adventures",
+    "testimonialVideoSection": "Testimonial Videos",
+    "featuresSection": "Features",
+    "teamSection": "Team",
+    "sessionsSection": "Sessions",
+    "blogSection": "Blog",
+    "testimonialSection": "Testimonials",
+    "commonQuestionsSection": "Common Questions",
+    "language": {
+      "english": "🌐 English",
+      "arabic": "🌐 عربى"
+    }
+  },
+  "hero": {
+    "welcome": "Welcome to Al-Fath Institute",
+    "description": "We are a global platform offering personalized lessons in Arabic, Islamic studies, and the Quran. With highly qualified teachers, we aim to make learning Arabic and Quranic studies enjoyable and accessible for students and parents worldwide.",
+    "getStarted": "Register Now",
+    "aboutUs": "About Us",
+    "aboutWelcome": "Welcome to Al-Fath Learning Center",
+    "experience": "25+ years of experience achieved",
+    "quote": "Allah says: \"ولقد يسرنا القرآن للذكر فهل من مدكر\" When your eyes fall upon this verse, know that all meanings of ease and simplicity in your mind are embodied in it.",
+    "achievement1": "Ease and simplicity in recitation",
+    "students1": "Learning, application, and practice",
+    "instructors1": "Understanding and memorization",
+    "family1": "Family",
+    "quote1": "Clear your mind with us, come with an open heart, leave distractions behind, and read, feeling the greatness of the words and the majesty of the Speaker. Register with Al-Fath Institute to help you achieve all this and much more.",
+    "achievement": "Weekly Classes",
+    "students": "Total Students",
+    "instructors": "Total Instructors",
+    "family": "Family",
+    "contactUs": "Contact Us"
+  },
+  "INSTITUTE": {
+    "TITLE": "Al-Fath Institute for Arabic Language",
+    "DESCRIPTION_1": "Our lessons are carefully designed to align with your individual goals, whether for professional life, travel to any Arab country, reading in Arabic, exploring Arab culture, Islamic culture, or religious studies.",
+    "DESCRIPTION_2": "Individual language training at Al-Fath Institute helps you achieve your goals with the support and motivation of a personal teacher who possesses high competency in teaching Arabic.",
+    "DESCRIPTION_3": "Enjoy interactive educational classes designed to build trust between you and the institute and help you learn effectively and enjoyably. Educational classes at Al-Fath Institute are the key to improving fluency in learning Arabic, memorizing the Holy Quran, and studying Islamic sciences.",
+    "START_LEARNING": "Start Your Journey",
+    "LEARN_MORE": "Explore Programs"
+  }, "feature": {
+    "header": {
+      "title": "Why Parents and Children Love Us"   
+     },
+    "mainFeature": {
+      "description": "Al-Fath Educational School combines traditional Arabic and Islamic education with modern teaching methodologies, making it a pioneer in distance learning for non-native Arabic speakers."
+    },
+    "videos": {
+      "titles": {
+        "video1": "Getting Started Guide",
+        "video2": "Advanced Features Tutorial",
+        "video3": "Success Stories"
+      },
+      "descriptions": {
+        "video1": "Learn how to make the most of our platform in under 5 minutes",
+        "video2": "Discover powerful advanced features to supercharge your workflow",
+        "video3": "See how others have achieved success using our platform"
+      }
+    },
+    "featuresList": {
+      "feature0": {
+        "title": "Why Parents Choose Al-Fath Educational School",
+        "description": "The school plays a significant role in instilling the foundations and pillars of the relationship between students, their parents, and the community, as well as its ethics and qualities. On the other hand, we see the community's support for the school and its assistance, believing in its importance and its great role in influencing the community's variables, directions, and future as well."
+      },
+      "feature1": {
+        "title": "Arabic Language Excellence",
+        "description": "Specialized curriculum for teaching Arabic to non-native speakers through innovative distance learning methods"
+      },
+      "feature2": {
+        "title": "Quranic Studies",
+        "description": "Comprehensive Quran memorization programs with certified instructors and personalized learning paths"
+      },
+      "feature3": {
+        "title": "Islamic Sciences",
+        "description": "In-depth Islamic studies curriculum covering essential religious knowledge and principles"
+      }
+    }
+  },
+  "FEATURES": {
+    "EXPERT_TEACHERS": "Expert Teachers",
+    "EXPERT_TEACHERS_DESC": "Learn from certified native Arabic speakers with years of teaching experience",
+    
+    "INTERACTIVE_LEARNING": "Interactive Learning",
+    "INTERACTIVE_LEARNING_DESC": "Engage in dynamic, interactive sessions designed for maximum retention",
+    
+    "PERSONALIZED": "Personalized Approach",
+    "PERSONALIZED_DESC": "Customized learning plans tailored to your specific goals and pace",
+    
+    "ISLAMIC_STUDIES": "Islamic Studies",
+    "ISLAMIC_STUDIES_DESC": "Comprehensive programs combining Arabic language with Islamic sciences",
+    
+    "BENEFITS": {
+      "TITLE": "Why Choose Al-Fath",
+      "FLEXIBLE": "Flexible Schedule",
+      "CERTIFIED": "Certified Programs",
+      "MODERN": "Modern Teaching Methods",
+      "PRACTICE": "Regular Practice Sessions"
+    }
+  },
+  "registration": {
+    "desc": "At Al-Fath Institute, we strive to teach Arabic to non-native speakers, help them memorize the Quran, and study Islamic sciences. We focus on understanding the needs of students and providing a curriculum that makes learning Arabic easier in a way that suits their abilities, avoiding the challenges of traditional curriculums. We provide an educational environment that fosters their love for the Arabic language and helps them overcome learning challenges. This is done under the supervision of specialized professors from Al-Azhar University.",
+    "tag": "Quick Contact",
+    "title": "Register with minimal information",
+    "coursesCount": "We will contact you soon",
+    "coursesText": " by our staff",
+    "subtitle": "Learn something new and build your child’s future from anywhere in the world",
+    "videoHint": {
+      "title": "Watch the introductory video",
+      "subtitle": "Learn more about Alfath Institute"
+    },
+    "form": {
+      "title": "Fill Your Registration",
+      "firstName": {
+        "placeholder": "First Name",
+        "error": "First Name is required and must be at least 2 characters long."
+      },
+      "lastName": {
+        "placeholder": "Last Name",
+        "error": "Last Name is required and must be at least 2 characters long."
+      },
+      "phoneNumber": {
+        "error": "Phone Number is required."
+      },
+      "submit": "Sign Up →"
+    }
+  },
+  "subject": {
+    "popularSubjectLabel": "Popular Subjects",
+    "headerTitle": "Join the Al-Fath Teaching Team",
+    "headerSubtitle": "Contribute to the future of education at Al-Fath Institute by joining our team of passionate and qualified teachers.",
+    "headerQuote": "At Al-Fath, teaching is about nurturing minds and inspiring growth. Become part of our mission to deliver quality education.",
+    "applyButton": "Apply Now",
+    "subjectCards": [
+      {
+        "icon": "📖",
+        "title": "Islamic Studies",
+        "description": "We seek teachers who can provide insightful and deep understanding of Islamic principles and history."
+      },
+      {
+        "icon": "📖",
+        "title": "Qur'an",
+        "description": "Join our institute to teach students the recitation and memorization of the Holy Qur'an."
+      },
+      {
+        "icon": "📖",
+        "title": "Tajweed",
+        "description": "Be part of our department teaching proper Tajweed and the memorization of the Qur'an."
+      },
+      {
+        "icon": "📝",
+        "title": "Arabic Language",
+        "description": "Help us preserve the beauty of the Arabic language by teaching it to our enthusiastic students."
+      }
+    ],
+    "viewSubjectLink": "View Open Positions"
+  },
+  "activities": {
+    "title": "Explore Our Courses",
+    "cards": [
+      {
+        "image": "../../../assets/images/Arabic.png",
+        "title": "Arabic Course",
+        "description": "At Al-Fateh Institute, we make learning Arabic easy and enjoyable. We light the way to effective communication. ",
+        "buttonLabel": "Explore Course",
+        "link": "arabic-course"
+      },
+      {
+        "image": "../../../assets/images/Praying_boy-scaled.jpg",
+        "title": "Qur'an Course",
+        "description": "At Al-Fateh Institute, we make learning the Holy Quran an inspiring spiritual experience. We light the way to faith and devotion",
+        "buttonLabel": "Explore Course",
+        "link": "quran-course"
+      },
+      {
+        "image": "../../../assets/images/Islamic.avif",
+        "title": "Islamic Course",
+        "description": "At Al-Fateh Institute, we make learning Islamic sciences an inspiring journey towards deep understanding. We light the way to wisdom. ",
+        "buttonLabel": "Explore Course",
+        "link": "islamic-course"
+      }
+    ]
+  },
+ 
+  "testimonials": {
+    "title": "What Parents Say About Us",
+    "popularSubjectLabel": "Al-Fath Institute",
+    "headerTitle": "Today's Children Will Be Tomorrow's Leaders and the Future We Must Invest In",
+    "headerSubtitle": "Al-Fath Educational School plays an active role in nurturing students and strengthening their skills within the community. As the foundational support after the family, the school is essential in educating, developing talents",
+    "headerQuote": "Many people may overlook the importance of Al-Fath Educational School and its significant role in community development, neglecting the idea of enrolling their children. Often considered secondary to the main educational system in their country, whether in America or Europe, the Arabic language and Islamic teachings may be undervalued. However, this neglect could affect children's Arabic and Islamic identity.",
+    "exploreButton": "Contact Us to Learn More"
+  },
+  "features": {
+    "imageUrl": "assets/images/hero.png",
+    "imageAlt": "Fun Learning",
+    "title": "Why Kids and Parents Love Us?",
+    "mainFeatureIcon": "assets/images/hero.png",
+    "mainFeatureTitle": "Interactive Learning",
+    "mainFeatureDescription": "Our courses are designed to be engaging and interactive, making learning fun!",
+    "accordionFeatures": [
+      {
+        "headingId": "headingOne",
+        "collapseId": "collapseOne",
+        "iconUrl": "assets/images/hero.png",
+        "title": "Expert Instructors",
+        "description": "Learn from the best with our experienced and friendly instructors."
+      },
+      {
+        "headingId": "headingTwo",
+        "collapseId": "collapseTwo",
+        "iconUrl": "assets/images/hero.png",
+        "title": "Fun Activities",
+        "description": "Enjoy a variety of fun activities that make learning enjoyable."
+      }
+    ]
+  },
+  "ourTeam": {
+    "title": "Meet Our Team",
+    "members": [
+      {
+        "photoUrl": "../../../../assets/images/hero.png",
+        "name": "John Doe",
+        "role": "Chief Fun Officer",
+        "description": "John loves creating exciting learning experiences for kids. His passion for education makes him the perfect leader for our team!"
+      },
+      {
+        "photoUrl": "../../../../assets/images/hero.png",
+        "name": "Jane Smith",
+        "role": "Creative Genius",
+        "description": "Jane brings creativity and innovation to our projects, making learning fun and engaging for every child."
+      },
+      {
+        "photoUrl": "../../../../assets/images/hero.png",
+        "name": "Sam Brown",
+        "role": "Tech Wizard",
+        "description": "Sam's expertise in technology ensures that our platform runs smoothly and is always up to date with the latest trends."
+      }
+    ]
+  },
+  "VIDEO_PLAYLIST": {
+    "TITLE": "Check our Sessions"
+  },
+  "COMMON_QUESTIONS": {
+    "TITLE": "academy INFO",
+   "QUESTIONS": [
+    {
+      "TITLE": "What are the qualifications of your teachers?",
+      "CONTENT": "All teachers are graduates of Al-Azhar University",
+      "ICON_ALT": "Question Icon"
+    },
+    {
+      "TITLE": "What is your doctrine of teaching children?",
+      "CONTENT": "Our doctrine is the doctrine of the Sunnis and the community, and we do not have any thought or belief that contradicts the word of God and the Sunnah of His Messenger, may God bless him and grant him peace.",
+      "ICON_ALT": "Question Icon"
+    },
+    {
+      "TITLE": "What is the nationality of the teachers in your school?",
+      "CONTENT": "All of our male and female teachers at the institute are from Egypt",
+      "ICON_ALT": "Question Icon"
+    },
+    {
+      "TITLE": "What are your curricula?",
+      "CONTENT": "We have our own curricula in the Arabic language, the Holy Qur’an, and Islamic sciences",
+      "ICON_ALT": "Question Icon"
+    },
+    {
+      "TITLE": "Do you have education for adults or is education for adults only?",
+      "CONTENT": "Yes, for adults and children",
+      "ICON_ALT": "Question Icon"
+    },
+    {
+      "TITLE": "My son is very young. Do you have programs suitable for young children?",
+      "CONTENT": "Yes, we have students starting from 4 years old and teachers who specialize in dealing with these ages",
+      "ICON_ALT": "Question Icon"
+    },
+    {
+      "TITLE": "Does my son study alone or with a group?",
+      "CONTENT": "Yes, we have students starting from 4 years old and teachers who specialize in dealing with these ages",
+      "ICON_ALT": "Question Icon"
+    },
+    {
+      "TITLE": "After how many months can my son start reading the Holy Quran on his own?",
+      "CONTENT": "This depends on his ability to comprehend and follow up with him at home and with the teacher, but after less than six months, the student with us can read alone.",
+      "ICON_ALT": "Question Icon"
+    },
+    {
+      "TITLE": "My son’s schedule is very busy, so I find it difficult to coordinate a fixed time for class?",
+      "CONTENT": "We have a full supervisory staff working 24 hours a day, and their mission is to provide a convenient time for you. In coordination with him, he can reschedule classes for the appropriate time with you.",
+      "ICON_ALT": "Question Icon"
+    }
+  ]
+  },
+  "MODAL": {
+    "TITLE": "Let's Connect!",
+    "CLOSE": "Close",
+    "SUBMIT": "Submit",
+    "FIELDS": {
+      "NAME": {
+        "PLACEHOLDER": "Your Name",
+        "ERROR": "Name is required."
+      },
+      "COUNTRY": {
+        "PLACEHOLDER": "Your Country",
+        "ERROR": "Country is required."
+      },
+      "PHONE": {
+        "ERROR": "Phone number is required."
+      },
+      "NUMBER_OF_CHILDREN": {
+        "PLACEHOLDER": "Number of Children",
+        "ERROR": "Number of Children is required."
+      },
+      "PLAN_CHOICE": {
+        "PLACEHOLDER": "Select your plan",
+        "OPTIONS": {
+          "BASIC": "Basic",
+          "STANDARD": "Standard",
+          "PRO": "Pro"
+        },
+        "ERROR": "Plan is required."
+      },
+      "COURSE": {
+        "PLACEHOLDER": "Select your course",
+        "OPTIONS": {
+          "QURAN": "Quran",
+          "HADITH": "Hadith",
+          "ARABIC": "Arabic"
+        },
+        "ERROR": "Course is required."
+      },
+      "CITY": {
+        "PLACEHOLDER": "Your City",
+        "ERROR": "City is required."
+      }
+    },
+    "NOTIFICATION": {
+      "SUCCESS": "Form submitted successfully!",
+      "ERROR": "There was an error submitting the form."
+    }
+  },
+  "Arabic-course": {
+    "welcome": " 📚Al-Fath Institute 🌍",
+    "description": "presents: Arabic Language Course for Non-Native Speakers ",
+    "why_choose": "Why choose Al-Fath Institute's course?",
+    "points": [
+      "A comprehensive curriculum covering all aspects of Arabic: reading, writing, speaking, and listening, ensuring a well-rounded education.",
+      "A team of professional teachers experienced in teaching Arabic to non-native speakers, using the latest methods.",
+      "A variety of classes for different ages and levels, with a flexible schedule to suit families. Private classes are also available.",
+      "We rely on modern technology and interactive tools for an enjoyable and effective learning experience.",
+      "In addition to language, students gain a deep understanding of Arab and Islamic culture, reinforcing their cultural identity."
+    ],
+    "objectives": {
+      "title": "Course Objectives:",
+      "points": [
+        "Develop Arabic language skills in children and youth in a fun and effective way.",
+        "Strengthen the Arab and Islamic cultural identity of the community.",
+        "Provide opportunities for community members to connect and share experiences."
+      ]
+    },
+    "call_to_action": "Don't miss this valuable opportunity to teach your children Arabic and enable them to connect better with their community.",
+    "registration": "register or learn more"
+  },
+  "Islamic-course": {
+    "welcome": "📚Al-Fath Institute🌍",
+    "description": " Al-Fath Institute offers a distinguished Islamic studies course for Arab children and youth residing in America and Europe.",
+    "why_choose": "Why choose Al-Fath Institute's course?",
+    "points": [
+      "A comprehensive curriculum covering various aspects of Islamic sciences: Quran, Hadith, Fiqh, and Aqeedah, ensuring a well-rounded education.",
+      "A team of experienced and specialized teachers in children's education, using the latest methods.",
+      "A variety of classes for different ages and levels, with a flexible schedule to suit families. Private lessons are also available upon request.",
+      "We rely on modern technology and interactive tools for an enjoyable and effective learning experience.",
+      "In addition to Islamic sciences, students are taught Islamic morals and values to strengthen their cultural and religious identity."
+    ],
+    "objectives": {
+      "title": "Course Objectives:",
+      "points": [
+        "Develop Islamic science skills in children and youth in a fun and effective way.",
+        "Strengthen the Islamic and cultural identity of the Arab community.",
+        "Provide opportunities for community members to connect and share experiences."
+      ]
+    },
+    "call_to_action": "Reserve your spot now! Don't miss this valuable opportunity to teach your children Islamic sciences and enable them to connect better with their community.",
+    "registration": "To register or learn more, please visit the registration page."
+  },
+  "Quran-course": {
+    "welcome": "📖Al-Fath Institute🌍",
+    "description": "Al-Fath Institute offers a distinguished Qur'an course for Arab children and youth residing in America and Europe.",
+    "why_choose": "Why choose Al-Fath Institute's Qur'an course?",
+    "points": [
+      "A comprehensive curriculum covering Qur'anic recitation, Tajweed, and memorization of various Surahs, catering to all levels.",
+      "A team of specialized teachers experienced in teaching children Tajweed and memorization using modern educational methods.",
+      "Flexible class schedules that suit family needs, with the option for private lessons.",
+      "We use interactive technology to provide an enjoyable and effective learning experience.",
+      "In addition to memorization, children are taught the meanings of the Surahs to deepen their understanding of the Qur'an."
+    ],
+    "objectives": {
+      "title": "Course Objectives:",
+      "points": [
+        "Teach children proper Qur'anic recitation and Tajweed.",
+        "Help children memorize the Qur'an and strengthen their connection to it.",
+        "Provide children with a deeper understanding of the meanings of the Qur'an."
+      ]
+    },
+    "call_to_action": "Reserve your spot now! Don't miss this valuable opportunity to teach your children how to recite and memorize the Qur'an, and strengthen their connection to their faith.",
+    "registration": "To register or learn more, please visit the registration page."
+  },
+  "HIRING-Teacher": {
+    "LOADING": "Loading...",
+    "TEACHER_FORM": {
+      "TITLE": "Teacher Application Form",
+      "NAME": {
+        "LABEL": "Full Name",
+        "ERROR": "Name is required and must be at least 2 characters"
+      },
+      "EDUCATION": {
+        "LABEL": "Education",
+        "ERROR": "Education is required"
+      },
+      "FIELDS": {
+        "LABEL": "Select Fields (you can choose multiple fields)",
+        "ERROR": "At least one field must be selected"
+      },
+      "PHONE": {
+        "LABEL": "Phone Number",
+        "ERROR": "Valid phone number is required"
+      },
+      "NATIONAL_ID": {
+        "LABEL": "National ID",
+        "ERROR": "Valid 14-digit national ID is required"
+      },
+      "YEARS_OF_EXPERIENCE": {
+        "LABEL": "Years of Experience",
+        "ERROR": "Years of experience must be between 0 and 50"
+      },
+      "DATE_OF_BIRTH": {
+        "LABEL": "Date of Birth",
+        "ERROR": "You must be between 18 and 65 years old"
+      }
+    },
+    "START_QUIZ_BUTTON": "Start Quiz",
+    "RESET_BUTTON": "Reset Form"
+  },
+  "QUIZ": {
+    "TITLE": "Quiz",
+    "QUESTION": "Question {{number}} of {{total}}",
+    "TIME_LEFT": "Time Left: {{seconds}} seconds",
+    "END_QUIZ": "End Quiz"
+  },
+  "QUIZ_RESULTS": {
+    "TITLE": "Quiz Results",
+    "SCORE": "Your Score: {{score}} out of {{total}}",
+    "PROMPT": "What would you like to do now?",
+    "RESTART_BUTTON": "Restart Quiz",
+    "RESET_BUTTON": "Reset Form",
+    "SUBMIT_BUTTON": "Submit Application"
+  },
+  "SUBMISSION_CONFIRMATION": {
+    "TITLE": "Submission Confirmation",
+    "MESSAGE": "Your application has been submitted successfully.",
+    "SCORE": "Your Final Score: {{score}} out of {{total}}"
+  },
+  "FIELDS": {
+    "FIELD1": "القرآن الكريم",
+    "FIELD2": "اللغة العربية"
+  },
+  "QUESTIONS": {
+    "FIELD1": {
+      "Q1": {
+        "question": "قال الله تعالي : \" إنا نحن نزلنا القرآن تنزيلا * فاصبر لحكم ربك ولا تطع منهم آثما أو كفورا * واذكر اسم ربك بكرة وأصيلا * ومن الليل فاسجد له وسبحه ليلا طويلا * إن هؤلاء يحبون العاجلة ويذرون وراءهم يوما ثقيلا \"\n  →    معني بكرة وأصيلا : .................",
+        "options": ["أول الأسبوع وآخره", "بداية الليل", "أول النهار وآخره"],
+        "correctAnswer": 2
+      },
+      "Q2": {
+        "question": "قال الله تعالي : \" إنا نحن نزلنا القرآن تنزيلا * فاصبر لحكم ربك ولا تطع منهم آثما أو كفورا * واذكر اسم ربك بكرة وأصيلا * ومن الليل فاسجد له وسبحه ليلا طويلا * إن هؤلاء يحبون العاجلة ويذرون وراءهم يوما ثقيلا \"\n   →    أوصي الله تعالي رسوله صلي الله عليه وسلم بالصبر والاستعانة به من خلال .....",
+        "options": ["الذكر", "التسبيح", "الصلاة في جوف الليل", "جميع ما سبق"],
+        "correctAnswer": 3
+      },
+      "Q3": {
+        "question": "قال الله تعالي : \" إنا نحن نزلنا القرآن تنزيلا * فاصبر لحكم ربك ولا تطع منهم آثما أو كفورا * واذكر اسم ربك بكرة وأصيلا * ومن الليل فاسجد له وسبحه ليلا طويلا * إن هؤلاء يحبون العاجلة ويذرون وراءهم يوما ثقيلا \"\n   →    المقصود بـ \" هؤلاء الذين يحبون العاجلة \" .......",
+        "options": ["المشركون", "المؤمنون", "الصالحون"],
+        "correctAnswer": 0
+      },
+      "Q4": {
+        "question": "قال الله تعالي : \" إنا نحن نزلنا القرآن تنزيلا * فاصبر لحكم ربك ولا تطع منهم آثما أو كفورا * واذكر اسم ربك بكرة وأصيلا * ومن الليل فاسجد له وسبحه ليلا طويلا * إن هؤلاء يحبون العاجلة ويذرون وراءهم يوما ثقيلا \"\n   →     \" العاجلة هي .............",
+        "options": ["الدنيا", "الآخرة", "كلاهما"],
+        "correctAnswer": 0
+      },
+      "Q5": {
+        "question": "قال الله تعالي : \" إنا نحن نزلنا القرآن تنزيلا * فاصبر لحكم ربك ولا تطع منهم آثما أو كفورا * واذكر اسم ربك بكرة وأصيلا * ومن الليل فاسجد له وسبحه ليلا طويلا * إن هؤلاء يحبون العاجلة ويذرون وراءهم يوما ثقيلا \"\n   →    من أحكام التجويد في قوله تعالي \" بكرة وأصيلا \" ........................",
+        "options": ["إظهار", "إدغام بغنة", "إدغام بدون غنة"],
+        "correctAnswer": 0
+      },
+      "Q6": {
+        "question": "قال الله تعالي : \" إنا نحن نزلنا القرآن تنزيلا * فاصبر لحكم ربك ولا تطع منهم آثما أو كفورا * واذكر اسم ربك بكرة وأصيلا * ومن الليل فاسجد له وسبحه ليلا طويلا * إن هؤلاء يحبون العاجلة ويذرون وراءهم يوما ثقيلا \"\n   →     من أحكام التجويد في قوله تعالي : \" أثما أو كفورا \" .......................",
+        "options": ["إظهار", "إخفاء", "إقلاب"],
+        "correctAnswer": 1
+      },
+      "Q7": {
+        "question": "قال الله تعالي : \" إنا نحن نزلنا القرآن تنزيلا * فاصبر لحكم ربك ولا تطع منهم آثما أو كفورا * واذكر اسم ربك بكرة وأصيلا * ومن الليل فاسجد له وسبحه ليلا طويلا * إن هؤلاء يحبون العاجلة ويذرون وراءهم يوما ثقيلا \"\n   →     من أحكام التجويد في قوله تعالي \" ليلا طويلا \".",
+        "options": ["إدغام بدون غنة", "إظهار", "إخفاء"],
+        "correctAnswer": 1
+      },
+      "Q8": {
+        "question": "قال الله تعالي : \" إنا نحن نزلنا القرآن تنزيلا * فاصبر لحكم ربك ولا تطع منهم آثما أو كفورا * واذكر اسم ربك بكرة وأصيلا * ومن الليل فاسجد له وسبحه ليلا طويلا * إن هؤلاء يحبون العاجلة ويذرون وراءهم يوما ثقيلا \"\n   →     المد في كلمة ( هؤلاء ) ...............................",
+        "options": ["منفصل", "كلمي مثقل", "متصل"],
+        "correctAnswer": 0
+      },
+      "Q9": {
+        "question": "قال الله تعالي : \" إنا نحن نزلنا القرآن تنزيلا * فاصبر لحكم ربك ولا تطع منهم آثما أو كفورا * واذكر اسم ربك بكرة وأصيلا * ومن الليل فاسجد له وسبحه ليلا طويلا * إن هؤلاء يحبون العاجلة ويذرون وراءهم يوما ثقيلا \"\n   →    الألف الخنجرية إذا وجدت في وسط الكلمة .......................",
+        "options": ["تنطق ألف ممدودة غير مكتوبة", "تنطق وتكتب", "لا تنطق ولا تكتب"],
+        "correctAnswer": 0
+      },
+      "Q10": {"question": "من واجبنا نحو القرآن الكريم", "options": ["الحرص على تلاوته مع تطبيق أحكام التجويد", "التأمل في معاني كلام الله عز وجل وفهمها", "اتباع أحكامه والالتزام بأوامره وآدابه", "كل ما سبق"], "correctAnswer": 3},
+      "Q11": {"question": "من حق القرآن الكريم علينا نحن المسلمين", "options": ["التعظيم له ومحبته", "التعلم والتعليم لآياته", "حفظه أو حفظ بعضه", "كل ما سبق"], "correctAnswer": 3},
+      "Q12": {"question": "من أركان العقيدة الإسلامية", "options": ["الإيمان بالكتب السماوية والإنجيل هو آخر الكتب", "الإيمان بالكتب السماوية والقرآن هو أخر الكتب", "الإيمان بالكتب السماوية دون معرفة شيء عنها"], "correctAnswer": 1},
+      "Q13": {"question": "كان القرآن الكريم قبل نزوله مكتوبا عند الله تعالى في", "options": ["مصحف من الورق", "الرقاع وسعف النخيل", "اللوح المحفوظ"], "correctAnswer": 2},
+      "Q14": {"question": "نزل القرآن الكريم على النبي صلى الله عليه وسلم وهو في سن", "options": ["الخامسة والثلاثين", "الثانية والأربعين", "الأربعين"], "correctAnswer": 2},
+      "Q15": {"question": "كان أول آيات القرآن الكريم نزولا على النبي صلى الله عليه وسلم في", "options": ["غار ثور", "غار حراء", "بيت السيدة خديجة رضي الله عنها"], "correctAnswer": 1},
+      "Q16": {"question": "كان جمع القرآن الكريم في عهد الرسول صلى الله عليه وسلم", "options": ["في الرقاع والصحف", "قلب النبي صلى الله عليه وسلم وقلب أصحابه", "بين دفتي مصحف كالذي بين أيدينا"], "correctAnswer": 1},
+      "Q17": {"question": "جمع القرآن للمرة الثانية في عهد", "options": ["أبو بكر الصديق", "عمر بن الخطاب", "عثمان بن عفان"], "correctAnswer": 0},
+      "Q18": {"question": "جمع القرآن للمرة الثالثة في عهد", "options": ["أبو بكر الصديق", "عمر بن الخطاب", "عثمان بن عفان"], "correctAnswer": 2}
+    },
+    "FIELD2": {
+      "Q1": {"question": "كلمة (مولاي) أصلها المجرد هو", "options": ["مولي", "ولي", "وال"], "correctAnswer": 1},
+      "Q2": {"question": "كلمة (قاض) أصلها المجرد هو", "options": ["قوض", "قضي", "اقض"], "correctAnswer": 1},
+      "Q3": {"question": "كلمة (سقت) أصلها المجرد هو", "options": ["سوق", "سقا", "سقاء"], "correctAnswer": 0},
+      "Q4": {"question": "كلمة (العامة) أصلها المجرد هو", "options": ["عام", "عمم", "عمو"], "correctAnswer": 0},
+      "Q5": {"question": "وزن كلمة (عد) هو", "options": ["فل", "عل", "فعل"], "correctAnswer": 2},
+      "Q6": {"question": "وزن كلمة (صفة) هو", "options": ["فله", "عله", "عول"], "correctAnswer": 1},
+      "Q7": {"question": "معنى كلمة (البيداء) هو", "options": ["السماء", "الأرض", "الصحراء"], "correctAnswer": 2},
+      "Q8": {"question": "الفعل (نحب) ماضيه هو", "options": ["حب", "أحب", "حبب"], "correctAnswer": 0},
+      "Q9": {"question": "الفعل (ادعُ) هو", "options": ["مجزوم بالسكون", "مرفوع بالضمة", "مجزوم بحذف حرف العلة"], "correctAnswer": 2},
+      "Q10": {"question": "من الأسماء المبنية هو", "options": ["الإسلام", "القرآن", "هؤلاء"], "correctAnswer": 2},
+      "Q11": {"question": "من الأسماء المعربة هو", "options": ["الفتح", "يكتب", "نحن"], "correctAnswer": 0},
+      "Q12": {"question": "من معاني حرف الواو في اللغة هو", "options": ["التراخي", "التعقيب", "مطلق الجمع"], "correctAnswer": 2},
+      "Q13": {"question": "من معاني حرف الفاء في اللغة هو", "options": ["التراخي", "التعقيب", "مطلق الجمع"], "correctAnswer": 1},
+      "Q14": {"question": "من معاني ثم في اللغة هو", "options": ["التراخي", "التعقيب", "مطلق الجمع"], "correctAnswer": 0},
+      "Q15": {"question": "اللهم اغفر لنا (اللهم) هي", "options": ["مبتدأ", "خبر لمبتدأ محذوف", "منادي"], "correctAnswer": 2},
+      "Q16": {"question": "الضمير هو", "options": ["منفصل", "متصل", "مستتر"], "correctAnswer": 2},
+      "Q17": {"question": "الكلمة التي بها همزة قطع هي", "options": ["أصل", "الحضارة", "الجدارة"], "correctAnswer": 0},
+      "Q18": {"question": "الكلمة التي بها همزة وصل هي", "options": ["الفتح", "الإسلام", "محمد"], "correctAnswer": 1},
+      "Q19": {"question": "يا اللهم اغثنا، العبارة بها خطأ والصواب هو", "options": ["يا الله اغثنا", "اللهم اغثنا", "كلاهما"], "correctAnswer": 1},
+      "Q20": {"question": "الإعراب فرع المعني، العبارة تعني", "options": ["لا علاقة بين الإعراب والمعني", "فهم المعني يساعد علي الإعراب", "الإعراب قبل المعني"], "correctAnswer": 1}
+    }
+  },
+  "SUBMISSION_ERROR": "An error occurred while submitting the data. Please try again."
+}

@@ -1,0 +1,103 @@
+<section class="features-section">
+  <div class="container">
+    <div class="section-header text-center mb-8">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient mb-4">
+        {{ 'feature.header.title' | translate }}
+      </h2>
+      
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Video Slider Section -->
+      <div class="video-section">
+        <div class="video-slider" [class.loading]="isLoading">
+          <div class="video-container">
+            <div class="loader" *ngIf="isLoading">
+              <div class="spinner"></div>
+            </div>
+            <iframe
+              [src]="videos[currentVideoIndex].safeUrl"
+              (load)="onVideoLoad()"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          
+          <!-- <div class="video-info">
+            <h3 class="video-title">{{ videos[currentVideoIndex].titleKey | translate }}</h3>
+            <p class="video-description">{{ videos[currentVideoIndex].descriptionKey | translate }}</p>
+          </div> -->
+          
+          <div class="slider-controls">
+            <button class="control-btn prev" (click)="previousVideo()" [disabled]="isLoading">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="video-indicators">
+              <button
+                *ngFor="let video of videos; let i = index"
+                class="indicator-btn"
+                [class.active]="i === currentVideoIndex"
+                (click)="setVideo(i)"
+                [disabled]="isLoading">
+                <span class="sr-only">Video {{ i + 1 }}</span>
+              </button>
+            </div>
+            
+            <button class="control-btn next" (click)="nextVideo()" [disabled]="isLoading">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Section -->
+      <div class="features-content">
+        <!-- Main Feature Card -->
+        <div class="main-feature-card" [@cardHover]="mainFeatureHover">
+          <div class="feature-icon-wrapper">
+            <img [src]="mainFeature.iconUrl" alt="al-fath" class="feature-icon">
+          </div>
+          <p>{{ mainFeature.descriptionKey | translate }}</p>
+        </div>
+
+        <!-- Features Accordion -->
+        <div class="features-accordion">
+          <div
+            *ngFor="let feature of features"
+            class="feature-item"
+            [@expandCollapse]="feature.isExpanded ? 'expanded' : 'collapsed'"
+            (mouseenter)="feature.isHovered = true"
+            (mouseleave)="feature.isHovered = false">
+            
+            <button
+              class="feature-header"
+              [class.expanded]="feature.isExpanded"
+              (click)="toggleFeature(feature)"
+              [attr.aria-expanded]="feature.isExpanded">
+              
+              <div class="feature-icon-wrapper">
+                <img [src]="feature.iconUrl" [alt]="feature.titleKey | translate">
+              </div>
+              
+              <h4>{{ feature.titleKey | translate }}</h4>
+              
+              <i class="fas"
+                 [class.fa-chevron-down]="!feature.isExpanded"
+                 [class.fa-chevron-up]="feature.isExpanded"></i>
+            </button>
+            
+            <div
+              class="feature-content"
+              [class.expanded]="feature.isExpanded"
+              [@contentExpand]="feature.isExpanded ? 'expanded' : 'collapsed'">
+              <p>{{ feature.descriptionKey | translate }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

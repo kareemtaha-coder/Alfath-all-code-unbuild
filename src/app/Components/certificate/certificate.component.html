@@ -1,0 +1,88 @@
+<section class="gallery-container" [class.loading]="loading">
+  <h2 class="gallery-title" tabindex="0">Certificates Gallery</h2>
+
+  <div class="gallery-controls">
+    <button
+      class="control-button"
+      [class.active]="isPlaying$ | async"
+      (click)="toggleAutoPlay()"
+      [attr.aria-label]="(isPlaying$ | async) ? 'Pause slideshow' : 'Play slideshow'">
+      <span class="material-icons">
+        {{ (isPlaying$ | async) ? 'pause_circle' : 'play_circle' }}
+      </span>
+    </button>
+  </div>
+
+  <div class="gallery-wrapper" [class.has-error]="error">
+    <button
+      class="nav-button prev"
+      (click)="prevSlide()"
+      [attr.aria-label]="'Previous certificates'"
+      [disabled]="loading || (currentIndex$ | async) === 0">
+      <span class="material-icons">chevron_left</span>
+    </button>
+
+    <div class="gallery" role="region" aria-label="Certificates gallery">
+      <div class="gallery-slide" [style.transform]="transformValue">
+        <ng-container *ngIf="certificates$ | async as certificates">
+          <div class="gallery-item"
+               *ngFor="let cert of certificates; trackBy: trackByCertificate"
+               (click)="openPreview(cert)"
+               [attr.aria-label]="'View ' + cert.title + ' certificate'"
+               tabindex="0">
+            <div class="image-container">
+              <img [src]="imageUrl + cert.imageName" 
+                   [alt]="cert.title" 
+                   class="card-img"
+                   loading="lazy">
+              <div class="loading-overlay" *ngIf="loading">
+                <span class="spinner"></span>
+              </div>
+            </div>
+            <div class="overlay">
+              <h3>{{ cert.title }}</h3>
+              <p>{{ cert.description }}</p>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <button
+      class="nav-button next"
+      (click)="nextSlide()"
+      [attr.aria-label]="'Next certificates'"
+      [disabled]="loading || isLastSlide()">
+      <span class="material-icons">chevron_right</span>
+    </button>
+  </div>
+
+  <div class="error-message" *ngIf="error" role="alert">
+    <span class="material-icons">error_outline</span>
+    {{ error }}
+  </div>
+
+  <ng-container *ngIf="selectedCertificate$ | async as selectedCert">
+    <div class="preview-modal"
+         (click)="closePreview()"
+         role="dialog"
+         aria-label="Certificate preview">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <button class="close-button"
+                (click)="closePreview()"
+                aria-label="Close preview">
+          <span class="material-icons">close</span>
+        </button>
+        <div class="modal-image-container">
+          <img [src]="imageUrl + selectedCert.imageName"
+               [alt]="selectedCert.title"
+               loading="lazy">
+        </div>
+        <div class="modal-info">
+          <h3>{{ selectedCert.title }}</h3>
+          <p>{{ selectedCert.description }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</section>

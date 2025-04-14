@@ -1,0 +1,81 @@
+<section class="about-us py-5">
+    <!-- Heading -->
+    <h2 class="text-center mb-4">About Us</h2>
+    <div class="container">
+    <!-- Carousel -->
+    <div id="aboutCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+      <div class="carousel-inner ">
+        <!-- Carousel Item 1 -->
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+              <img src="../../../assets/images/blog/user-1.png"  loading="lazy" class="d-block w-75 rounded" alt="About Us Image 1">
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+              <div class="carousel-caption">
+                <h3 class="text-primary">Our Mission</h3>
+                <p>We aim to make learning fun and engaging for every child, helping them grow and explore their interests.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Carousel Item 2 -->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+              <img src="../../../assets/images/blog/user-1.png" loading="lazy" class="d-block w-75 rounded" alt="About Us Image 2">
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+              <div class="carousel-caption">
+                <h3 class="text-primary">Our Team</h3>
+                <p>Meet our dedicated team of educators who are passionate about making learning an exciting adventure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Carousel Item 3 -->
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-4">
+              <img src="../../../assets/images/blog/user-1.png" loading="lazy" class="d-block w-75 rounded" alt="About Us Image 3">
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+              <div class="carousel-caption">
+                <h3 class="text-primary">Our Vision</h3>
+                <p>We envision a future where every child has the opportunity to thrive and achieve their dreams.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Carousel Controls -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+   <!-- Interactive Section -->
+   <div class="mt-5 text-center">
+    <h3 class="text-primary mb-4">Discover More About Us</h3>
+    <div class="d-flex justify-content-center">
+      <button class="btn btn-primary me-3" (click)="showMoreInfo('info1')">Learn More</button>
+      <button class="btn btn-secondary" (click)="showMoreInfo('info2')">Our Values</button>
+    </div>
+    <div class="mt-4" *ngIf="currentInfo === 'info1'">
+      <p>Explore how we bring joy to learning through creative and interactive methods that captivate kids and foster their love for education.</p>
+    </div>
+    <div class="mt-4" *ngIf="currentInfo === 'info2'">
+      <p>Our values include making learning fun, encouraging curiosity, and creating a supportive environment where every child can thrive.</p>
+    </div>
+  </div>
+</div>
+
+</section>
+ 

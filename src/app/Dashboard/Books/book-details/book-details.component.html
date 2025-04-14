@@ -1,0 +1,64 @@
+<div class="container">
+  <!-- Error State -->
+  <div *ngIf="errorMessage" class="error-container">
+    <div class="error-message">
+      <i class="fa fa-exclamation-circle"></i>
+      <span>{{ errorMessage }}</span>
+    </div>
+  </div>
+
+  <!-- Book Details -->
+  <div *ngIf="book" class="book-details-container">
+    <div class="header">
+      <h1 class="book-title">{{ book.title }}</h1>
+      <button class="btn-back" (click)="goBack()">
+        <i class="fa fa-arrow-left"></i> Back
+      </button>
+    </div>
+
+    <div class="content">
+      <div class="book-cover-container">
+        <img
+          class="book-cover"
+          [src]="imageUrl + book.coverName"
+          [alt]="book.title"
+          loading="lazy"
+        />
+      </div>
+
+      <div class="book-info">
+        <div class="info-section">
+          <h2>About this Book</h2>
+          <p class="book-description">{{ book.description }}</p>
+        </div>
+
+        <div class="meta-details">
+          <div class="meta-item">
+            <span class="label">Author</span>
+            <span class="value">{{ book.author }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Reviewer</span>
+            <span class="value">{{ book.reviewer }}</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Part</span>
+            <span class="value">{{ book.part }}</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" (click)="viewPdf()">
+            <i class="fa fa-file-pdf"></i> View PDF
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="!book && !errorMessage" class="loading-container">
+    <div class="spinner"></div>
+    <p>Loading book details...</p>
+  </div>
+</div>

@@ -1,7 +1,9 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-
-
-platformBrowserDynamic().bootstrapModule(AppModule)
+import { provideAnimations } from '@angular/platform-browser/animations';
+platformBrowserDynamic()
+  .bootstrapModule(AppModule, {
+    providers: [provideAnimations()]  // Add this line
+  })
   .catch(err => console.error(err));

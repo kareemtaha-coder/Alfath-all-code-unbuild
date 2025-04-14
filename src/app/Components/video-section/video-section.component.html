@@ -1,0 +1,118 @@
+
+<section class="register" >
+  <div class="container registration-section">
+    <p>          {{ 'registration.desc' | translate }}
+    </p>
+    <div class="row align-items-center">
+      <div class="col-md-12 col-lg-6">
+
+        <h2 class="mb-4">
+          {{ 'registration.title' | translate }}
+          <span class="header-span">{{ 'registration.coursesCount' | translate }}</span>
+          {{ 'registration.coursesText' | translate }}
+        </h2>
+        <p>{{ 'registration.subtitle' | translate }}</p>
+
+        <div
+          class="video-hint d-flex align-items-center"
+          data-bs-toggle="modal"
+          data-bs-target="#videoModal"
+        >
+          <div class="play-button-wrapper">
+            <div class="animated-circle"></div>
+            <div class="animated-circle"></div>
+            <div class="animated-circle"></div>
+            <div class="play-button">
+              <i class="bi bi-play-fill"></i>
+            </div>
+          </div>
+          <div class="video-text ms-3">
+            <strong>{{ 'registration.videoHint.title' | translate }}</strong><br />
+            {{ 'registration.videoHint.subtitle' | translate }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()" class="registration-form text-dark">
+          <h3 class="mb-4">{{ 'registration.form.title' | translate }}</h3>
+        
+          <!-- First Name -->
+          <input
+            type="text"
+            class="form-control"
+            [placeholder]="'registration.form.firstName.placeholder' | translate"
+            formControlName="firstName"
+          />
+          <div *ngIf="RegisterForm.get('firstName')?.invalid && RegisterForm.get('firstName')?.touched" class="text-danger">
+            {{ 'registration.form.firstName.error' | translate }}
+          </div>
+        
+          <!-- Last Name -->
+          <input
+            type="text"
+            class="form-control"
+            [placeholder]="'registration.form.lastName.placeholder' | translate"
+            formControlName="lastName"
+          />
+          <div *ngIf="RegisterForm.get('lastName')?.invalid && RegisterForm.get('lastName')?.touched" class="text-danger">
+            {{ 'registration.form.lastName.error' | translate }}
+          </div>
+        
+          <!-- Phone Number -->
+          <ngx-intl-tel-input
+            [cssClass]="'form-control phone-input'"
+            [preferredCountries]="[CountryISO.Egypt, CountryISO.Palestine]"
+            [enableAutoCountrySelect]="false"
+            [searchCountryFlag]="true"
+            [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name , SearchCountryField.All]"
+            [selectFirstCountry]="false"
+            [selectedCountryISO]="CountryISO.Egypt"
+            [maxLength]="15"
+            formControlName="phoneNumber"
+            [onlyCountries]="allowedCountries"
+          ></ngx-intl-tel-input>
+          <div *ngIf="RegisterForm.get('phoneNumber')?.invalid && RegisterForm.get('phoneNumber')?.touched" class="text-danger">
+            {{ 'registration.form.phoneNumber.error' | translate }}
+          </div>
+        
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary" [disabled]="isLoading || RegisterForm.invalid">
+            <span *ngIf="!isLoading">{{ 'registration.form.submit' | translate }}</span>
+            <i *ngIf="isLoading" class="fas fa-spinner fa-spin"></i>
+          </button>
+        </form>
+        
+        <!-- Notification Message -->
+        <div *ngIf="notification" class="alert" [ngClass]="{
+          'alert-success': notification.type === 'success',
+          'alert-error': notification.type === 'error'
+        }">
+          {{ notification.message }}
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
+  <button type="button" class="close-modal" data-bs-dismiss="modal" aria-label="Close">
+    <i class="bi bi-x"></i>
+  </button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="ratio">
+          <iframe
+            id="videoIframe"
+            src=""
+            referrerpolicy="strict-origin-when-cross-origin"
+            title="YouTube video player"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

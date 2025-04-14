@@ -1,0 +1,136 @@
+<!-- blog.component.html -->
+<div class="main-blog" [ngStyle]="{'direction': blog?.language === 'Arabic' ? 'rtl' : 'ltr'}" *ngIf="blog || isLoading || error">
+  <!-- Reading Progress -->
+  <div class="reading-progress-bar" [style.width.%]="readingProgress"></div>
+  
+  <!-- Loading State -->
+  <div class="loading-spinner" *ngIf="isLoading" @fadeInOut>
+    <div class="spinner"></div>
+    <p>Loading blog post...</p>
+  </div>
+
+  <!-- Error State -->
+  <div class="error-message" *ngIf="error" @fadeInOut>
+    <p>{{ error }}</p>
+    <button (click)="getBlog()" class="retry-button">
+      <i class="fas fa-sync-alt"></i> Retry
+    </button>
+  </div>
+
+  <!-- Blog Content -->
+  <ng-container *ngIf="!isLoading && !error && blog">
+    <!-- Header -->
+    <header class="blog-header" @fadeInOut>
+      <div class="container">
+        <h1>{{ blog.title }}</h1>
+        <div class="blog-meta">
+          <div class="meta-item">
+            <i class="far fa-clock"></i>
+            <span>{{ readingTime }} minute read</span>
+          </div>
+          <div class="meta-item">
+            <i class="far fa-calendar-alt"></i>
+            <span>{{ blog.uploadedOn | date:'mediumDate' }}</span>
+          </div>
+          <div *ngIf="blog.writtenBy !='null'"  class="meta-item">
+              <i class="far fa-user"></i>
+              <span>{{ blog.writtenBy }}</span>
+          </div>
+        </div>
+        
+        <!-- Social Share -->
+        <div class="social-share">
+          <button (click)="share('whatsapp')" class="btn-share whatsapp" aria-label="Share on WhatsApp">
+            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+          </button>
+          
+          <button (click)="share('telegram')" class="btn-share telegram" aria-label="Share on Telegram">
+            <i class="fab fa-telegram-plane"></i> Share on Telegram
+          </button>
+          
+          <button (click)="copyLinkToClipboard()" class="btn-share copy" aria-label="Copy link">
+            <i class="fas fa-link"></i>
+            <span>Copy Link</span>
+          </button>
+          
+          <div *ngIf="isLinkCopied" @fadeInOut class="copy-notification">
+            Link copied to clipboard!
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <div class="content-wrapper">
+        <!-- Table of Contents -->
+        <nav class="table-of-contents" *ngIf="tableOfContents.length">
+          <h3>Table of Contents</h3>
+          <ul>
+            <li *ngFor="let item of tableOfContents" [style.paddingLeft.px]="(item.level - 2) * 16">
+              <a
+                [href]="'#' + item.id"
+                (click)="$event.preventDefault(); scrollToSection(item.id)"
+                [class.active]="currentSection === item.id"
+                [attr.aria-current]="currentSection === item.id ? 'true' : null">
+                {{ item.title }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Article -->
+        <article>
+          <!-- Featured Image -->
+          <div class="featured-image-container">
+            <img
+              class="featured-image"
+              [src]="imageUrl + blog.imageName"
+              [alt]="blog.title"
+              loading="lazy"
+              decoding="async">
+          </div>
+
+          <!-- Tags -->
+          <div class="tags" *ngIf="blog.tags?.length">
+            <span class="tag" *ngFor="let tag of blog.tags">
+              <i class="fas fa-tag"></i> {{ tag }}
+            </span>
+          </div>
+
+          <!-- Content -->
+          <div class="blog-content" [innerHTML]="blog.content"></div>
+
+          <!-- Video -->
+          <div *ngIf="blog.videoUrl !='null' && safeVideoUrl !=null" class="video-container" [innerHTML]="safeVideoUrl"></div>
+          </article>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider">
+        <div class="line"></div>
+        <div class="dot"></div>
+        <div class="line"></div>
+      </div>
+
+     <!-- Related Articles -->
+     <aside class="related-articles" @fadeInOut>
+      <h2>Related Articles</h2>
+      <div class="articles-grid">
+        <app-blog-section></app-blog-section>
+      </div>
+    </aside>
+  </main>
+</ng-container>
+</div>
+
+<!-- Back to Top Button -->
+<button
+class="back-to-top"
+[ngClass]="{'show': showBackToTop}"
+(click)="scrollToTop()"
+[@fadeInOut]
+aria-label="Back to top">
+<i class="fas fa-arrow-up"></i>
+</button>
+<app-contact-modal></app-contact-modal>

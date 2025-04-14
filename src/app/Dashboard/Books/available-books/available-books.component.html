@@ -1,0 +1,82 @@
+<div class="books-container">
+  <div class="header-section">
+    <h2 class="title">Available Books</h2>
+    <div class="actions-bar">
+      <div class="search-box">
+        <input
+          type="text"
+          [(ngModel)]="searchTerm"
+          (input)="searchBooks()"
+          placeholder="Search books..."
+          class="search-input"
+        >
+        <i class="fa fa-search search-icon"></i>
+      </div>
+      <button class="refresh-btn" (click)="refreshBooks()">
+        <i class="fa fa-refresh"></i> Refresh
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="loading-container">
+    <div class="loader"></div>
+    <p>Loading books...</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="notification" [ngClass]="{'success': errorMessage.includes('success'), 'error': errorMessage.includes('Error')}">
+    <i [class]="errorMessage.includes('success') ? 'fa fa-check-circle' : 'fa fa-exclamation-circle'"></i>
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!loading && filteredBooks.length === 0" class="no-results">
+    <i class="fa fa-book"></i>
+    <p>No books found matching your criteria.</p>
+    <button class="reset-btn" (click)="refreshBooks()">Reset Filters</button>
+  </div>
+
+  <div class="books-grid" *ngIf="!loading">
+    <div
+      class="book-card"
+      *ngFor="let book of filteredBooks"
+      (click)="goToDetails(book.id)"
+      @fadeIn
+    >
+      <div class="book-card-inner">
+        <div class="book-cover-container">
+          <img
+            class="book-cover"
+            [src]="imagUrl + book.coverName"
+            [alt]="book.title"
+
+          />
+          <div class="book-hover-info">
+            <button class="view-details-btn">View Details</button>
+          </div>
+        </div>
+        <div class="book-info">
+          <h3 class="book-title" [title]="book.title">{{ book.title }}</h3>
+          <p class="book-author">by <span>{{ book.author }}</span></p>
+          <p class="book-description" [title]="book.description">
+            {{ book.description.length > 100 ? (book.description | slice:0:100) + '...' : book.description }}
+          </p>
+          <div class="book-meta">
+            <span class="book-reviewer">
+              <i class="fa fa-user"></i> {{ book.reviewer }}
+            </span>
+            <span class="book-part">
+              <i class="fa fa-bookmark"></i> {{ book.part }}
+            </span>
+          </div>
+          <div class="book-actions">
+            <button class="delete-btn" (click)="deleteBook(book.id, $event)">
+              <i class="fa fa-trash"></i>
+            </button>
+            <button class="details-btn" (click)="goToDetails(book.id)">
+              Details <i class="fa fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

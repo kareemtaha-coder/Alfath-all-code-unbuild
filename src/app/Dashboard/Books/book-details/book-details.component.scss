@@ -1,0 +1,189 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+// Error styling
+.error-container {
+  background-color: rgba(#ff5252, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+
+  .error-message {
+    color: #ff5252;
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Book details styling
+.book-details-container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #eaeaea;
+
+  .book-title {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.book-cover-container {
+  display: flex;
+  justify-content: center;
+
+  .book-cover {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.info-section {
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    color: #333;
+  }
+
+  .book-description {
+    word-wrap: anywhere;
+    line-height: 1.6;
+    color: #555;
+  }
+}
+
+.meta-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+
+    .label {
+      font-size: 0.875rem;
+      color: #777;
+      margin-bottom: 0.25rem;
+    }
+
+    .value {
+      font-weight: 500;
+      color: #333;
+    }
+  }
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+// Button styling
+button {
+  cursor: pointer;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  i {
+    margin-right: 0.5rem;
+  }
+
+  &.btn-primary {
+    background-color: #3f51b5;
+    color: white;
+    border: none;
+
+    &:hover {
+      background-color: darken(#3f51b5, 10%);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &.btn-back {
+    background-color: transparent;
+    color: #555;
+    border: 1px solid #ddd;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+}
+
+// Loading state styling
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: #666;
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #3f51b5;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 1rem;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

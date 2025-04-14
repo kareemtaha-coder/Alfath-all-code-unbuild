@@ -1,0 +1,37 @@
+@import '../../../../styles.scss';
+/* teacher-management.component.css */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  :host ::ng-deep .tab-content {
+    padding: 16px;
+  }
+
+  :host ::ng-deep .card-title {
+    font-size: 1.25rem;
+  }
+}
+
+/* For smaller mobile screens */
+@media (max-width: 480px) {
+  :host ::ng-deep .action-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  :host ::ng-deep .action-buttons button {
+    width: 100%;
+  }
+}
+.nav-pills .active
+{
+  background-color:$primary-color;
+}

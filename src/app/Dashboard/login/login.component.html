@@ -1,0 +1,117 @@
+<div class="container-form" dir="ltr">
+  <div class="forms-container">
+      <div class="signin-signup">
+          <!-- Login Form -->
+          <form *ngIf="!showChangePassword && !showForgotPassword" class="sign-in-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <h2 class="title">Sign in</h2>
+              <div class="input-field">
+                  <i class="fas fa-user"></i>
+                  <input type="email" placeholder="Email" formControlName="email"/>
+              </div>
+              <div class="input-field">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" placeholder="Password" formControlName="password"/>
+              </div>
+              <div *ngIf="errorMessage" class="error-message">
+                  <i class="fas fa-exclamation-circle"></i> {{ errorMessage }}
+              </div>
+              <input type="submit" value="Login" class="btn solid" />
+              <p class="social-text">
+                  <a href="javascript:void(0)" (click)="toggleForgotPassword()">
+                      <i class="fas fa-key"></i> Forgot Your Password?
+                  </a>
+              </p>
+              <div class="social-media">
+                  <a href="#" class="social-icon">
+                      <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                      <i class="fab fa-google"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                      <i class="fab fa-linkedin-in"></i>
+                  </a>
+              </div>
+          </form>
+
+          <!-- Change Password Form -->
+          <form *ngIf="showChangePassword" class="change-password-form" [formGroup]="changePasswordForm" (ngSubmit)="onChangePassword()">
+              <h2 class="title">Change Password</h2>
+              <div class="input-field">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" placeholder="Current Password" formControlName="currentPassword"/>
+              </div>
+              <div class="input-field">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" placeholder="New Password" formControlName="newPassword"/>
+              </div>
+              <div class="input-field">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" placeholder="Confirm New Password" formControlName="confirmNewPassword"/>
+              </div>
+              <div class="input-field">
+                  <i class="fas fa-shield-alt"></i>
+                  <input type="text" placeholder="Security Code" formControlName="securityCode"/>
+              </div>
+              <div *ngIf="changePasswordErrorMessage" class="error-message">
+                  <i class="fas fa-exclamation-circle"></i> {{ changePasswordErrorMessage }}
+              </div>
+              <div *ngIf="changePasswordSuccessMessage" class="success-message">
+                  <i class="fas fa-check-circle"></i> {{ changePasswordSuccessMessage }}
+              </div>
+              <input type="submit" value="Change Password" class="btn solid" />
+              <button type="button" class="btn transparent" (click)="toggleChangePassword()">Back to Login</button>
+          </form>
+
+          <!-- Forgot Password Form -->
+          <form *ngIf="showForgotPassword" class="forgot-password-form" [formGroup]="forgotPasswordForm" (ngSubmit)="onForgotPassword()">
+              <h2 class="title">Forgot Password</h2>
+              <p class="form-description">Enter your email address and we'll send you a link to reset your password.</p>
+              <div class="input-field">
+                  <i class="fas fa-envelope"></i>
+                  <input type="email" placeholder="Email" formControlName="email"/>
+              </div>
+              <div *ngIf="forgotPasswordMessage && !showEmailSentPopup" [ngClass]="{'success-message': forgotPasswordMessage.includes('check your email'), 'error-message': !forgotPasswordMessage.includes('check your email')}">
+                  <i [class]="forgotPasswordMessage.includes('check your email') ? 'fas fa-check-circle' : 'fas fa-exclamation-circle'"></i> {{ forgotPasswordMessage }}
+              </div>
+              <input type="submit" value="Reset Password" class="btn solid" />
+              <button type="button" class="btn transparent" (click)="toggleForgotPassword()">Back to Login</button>
+          </form>
+      </div>
+  </div>
+  <div class="panels-container">
+      <div class="panel left-panel">
+          <div class="content">
+              <h3 *ngIf="!showChangePassword && !showForgotPassword">Need Help?</h3>
+              <h3 *ngIf="showChangePassword">Want to Login?</h3>
+              <h3 *ngIf="showForgotPassword">Remember Your Password?</h3>
+
+              <button *ngIf="!showChangePassword && !showForgotPassword" class="btn transparent" (click)="toggleChangePassword()">
+                  Change Password
+              </button>
+              <button *ngIf="showChangePassword || showForgotPassword" class="btn transparent" (click)="showChangePassword ? toggleChangePassword() : toggleForgotPassword()">
+                  Sign In
+              </button>
+          </div>
+          <img src="../../../assets/images/landing.png" class="image" alt="" />
+      </div>
+  </div>
+
+  <!-- Email Sent Popup -->
+  <div class="popup-overlay" *ngIf="showEmailSentPopup">
+      <div class="email-confirmation-popup">
+          <div class="popup-icon">
+              <i class="fas fa-envelope"></i>
+          </div>
+          <h3 class="popup-title">Check Your Email</h3>
+          <p class="popup-message">
+              We've sent a password reset link to <strong>{{ forgotPasswordEmail }}</strong>.
+              Please check your inbox and follow the instructions to reset your password.
+          </p>
+          <button class="popup-button" (click)="closeEmailSentPopup()">Got it</button>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,228 @@
+<div class="create-teacher-container">
+  <form [formGroup]="teacherForm" class="teacher-form" (ngSubmit)="submitTeacherData()">
+    <div class="form-header">
+      <h2>Create New Teacher</h2>
+      <p class="text-muted">Add a new teacher to the system</p>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="showSuccessAlert" class="alert alert-success">
+      <i class="bi bi-check-circle-fill"></i>
+      <span>{{ successMessage }}</span>
+      <button type="button" class="btn-close" (click)="closeSuccessAlert()"></button>
+    </div>
+
+    <!-- API Error Message -->
+    <div *ngIf="formErrors['apiError']" class="alert alert-danger">
+      <i class="bi bi-exclamation-triangle-fill"></i>
+      <span>{{ formErrors['apiError'] }}</span>
+    </div>
+
+    <div class="form-grid">
+      <!-- Personal Information Section -->
+      <div class="form-section">
+        <h3>Personal Information</h3>
+
+        <!--First Name Field -->
+        <div class="form-group">
+          <label for="firstName">First Name <span class="required">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input
+              id="firstName"
+              formControlName="firstName"
+              type="text"
+              class="form-control"
+              [ngClass]="{'is-invalid': formErrors['firstName']}"
+              placeholder="Enter first name">
+          </div>
+          <div *ngIf="formErrors['firstName']" class="invalid-feedback">
+            {{ formErrors['firstName'] }}
+          </div>
+        </div>
+
+        <!--Last Name Field -->
+        <div class="form-group">
+          <label for="lastName">Last Name <span class="required">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input
+              id="lastName"
+              formControlName="lastName"
+              type="text"
+              class="form-control"
+              [ngClass]="{'is-invalid': formErrors['lastName']}"
+              placeholder="Enter last name">
+          </div>
+          <div *ngIf="formErrors['lastName']" class="invalid-feedback">
+            {{ formErrors['lastName'] }}
+          </div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="password">Password<span class="required">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+            <input
+              id="password"
+              formControlName="password"
+              type="password"
+              class="form-control"
+              [ngClass]="{'is-invalid': formErrors['password']}"
+              placeholder="Enter password">
+          </div>
+          <div *ngIf="formErrors['password']" class="invalid-feedback">
+            {{ formErrors['password'] }}
+          </div>
+          <small class="form-text text-muted">At least 8 characters with lowercase, uppercase, number, and special character</small>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+          <label for="email">Email Address <span class="required">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+            <input
+              id="email"
+              formControlName="email"
+              type="email"
+              class="form-control"
+              [ngClass]="{'is-invalid': formErrors['email']}"
+              placeholder="name@example.com">
+          </div>
+          <div *ngIf="formErrors['email']" class="invalid-feedback">
+            {{ formErrors['email'] }}
+          </div>
+        </div>
+
+        <!-- Date of Birth Field -->
+        <div class="form-group">
+          <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+            <input
+              id="dateOfBirth"
+              formControlName="dateOfBirth"
+              type="date"
+              class="form-control"
+              [ngClass]="{'is-invalid': formErrors['dateOfBirth']}">
+          </div>
+          <div *ngIf="formErrors['dateOfBirth']" class="invalid-feedback">
+            {{ formErrors['dateOfBirth'] }}
+          </div>
+          <small class="form-text text-muted">Must be between 21 and 65 years old</small>
+        </div>
+
+        <!-- PhoneNumber Field with ngx-intl-tel-input -->
+        <div class="form-group">
+          <label for="PhoneNumber">Phone Number <span class="required">*</span></label>
+          <ngx-intl-tel-input
+            [cssClass]="'form-control'"
+            [preferredCountries]="preferredCountries"
+            [enableAutoCountrySelect]="true"
+            [searchCountryFlag]="true"
+            [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]"
+            [selectFirstCountry]="false"
+            [selectedCountryISO]="CountryISO.Egypt"
+            [maxLength]="15"
+            [phoneValidation]="true"
+            [separateDialCode]="true"
+            formControlName="PhoneNumber"
+            [onlyCountries]="allowedCountries"
+            [ngClass]="{'is-invalid': formErrors['PhoneNumber']}"
+          ></ngx-intl-tel-input>
+          <div *ngIf="formErrors['PhoneNumber']" class="invalid-feedback">
+            {{ formErrors['PhoneNumber'] }}
+          </div>
+        </div>
+
+        <!-- National ID Field -->
+        <div class="form-group">
+          <label for="nationalId">National ID <span class="required">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+            <input
+              id="nationalId"
+              formControlName="nationalId"
+              type="text"
+              class="form-control"
+              [ngClass]="{'is-invalid': formErrors['nationalId']}"
+              placeholder="14-digit ID number">
+          </div>
+          <div *ngIf="formErrors['nationalId']" class="invalid-feedback">
+            {{ formErrors['nationalId'] }}
+          </div>
+          <small class="form-text text-muted">Must be a valid 14-digit Egyptian ID</small>
+        </div>
+      </div>
+
+      <!-- Professional Information Section -->
+      <div class="form-section">
+        <h3>Professional Information</h3>
+
+        <!-- Education Field -->
+        <div class="form-group">
+          <label for="education">Education Level <span class="required">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-book"></i></span>
+            <input
+              id="education"
+              formControlName="education"
+              type="text"
+              class="form-control"
+              [ngClass]="{'is-invalid': formErrors['education']}"
+              placeholder="Highest degree attained">
+          </div>
+          <div *ngIf="formErrors['education']" class="invalid-feedback">
+            {{ formErrors['education'] }}
+          </div>
+        </div>
+
+        <!-- Years of Experience Field -->
+        <div class="form-group">
+          <label for="yearsOfExperience">Years of Experience <span class="required">*</span></label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
+            <input
+              id="yearsOfExperience"
+              formControlName="yearsOfExperience"
+              type="number"
+              min="0"
+              max="50"
+              class="form-control"
+              [ngClass]="{'is-invalid': formErrors['yearsOfExperience']}">
+          </div>
+          <div *ngIf="formErrors['yearsOfExperience']" class="invalid-feedback">
+            {{ formErrors['yearsOfExperience'] }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        [disabled]="isSubmitting"
+        (click)="teacherForm.reset({
+          userType: 'Teacher',
+          yearsOfExperience: 0,
+          dateOfBirth: '2001-06-20'
+        })">
+        <i class="bi bi-arrow-counterclockwise"></i> Reset
+      </button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="isSubmitting">
+        <div class="btn-content">
+          <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm"></span>
+          <i *ngIf="!isSubmitting" class="bi bi-plus-circle"></i>
+          <span>{{ isSubmitting ? 'Creating...' : 'Create Teacher' }}</span>
+        </div>
+      </button>
+    </div>
+  </form>
+</div>

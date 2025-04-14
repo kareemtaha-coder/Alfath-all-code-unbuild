@@ -1,0 +1,141 @@
+<section class="sessions-section">
+  <div class="sessions-header">
+    <h2>Learning Sessions</h2>
+    <div class="header-actions">
+      <div class="search-bar">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Search sessions..." #searchInput (input)="onSearch(searchInput.value)">
+      </div>
+      <div class="view-toggle">
+        <button class="icon-btn" [class.active]="isGridView" (click)="toggleView(true)" title="Grid View">
+          <i class="bi bi-grid"></i>
+        </button>
+        <button class="icon-btn" [class.active]="!isGridView" (click)="toggleView(false)" title="List View">
+          <i class="bi bi-list-ul"></i>
+        </button>
+      </div>
+      <button class="refresh-btn" (click)="loadSessions()" [class.rotating]="isLoading" title="Refresh Data">
+        <i class="bi bi-arrow-clockwise"></i>
+      </button>
+    </div>
+  </div>
+
+  <button class="fab-button" (click)="toggleNewSessionForm()">
+    <i class="bi" [ngClass]="isNewSessionFormVisible ? 'bi-x' : 'bi-plus'"></i>
+  </button>
+
+  <form *ngIf="isNewSessionFormVisible" [@slideInOut] (ngSubmit)="addSession()" class="session-form">
+    <div class="form-header">
+      <h3>Add New Session</h3>
+      <p>Share your knowledge with others</p>
+    </div>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" type="text" [(ngModel)]="newSession.title" name="title" required>
+    </div>
+    <div class="form-group">
+      <label for="link">YouTube Link</label>
+      <input id="link" type="text" [(ngModel)]="newSession.link" name="link" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="newSession.description" name="description" required></textarea>
+    </div>
+    <div class="form-actions">
+      <button type="button" class="cancel-btn" (click)="toggleNewSessionForm()">Cancel</button>
+      <button type="submit" [disabled]="isLoading">
+        <i class="bi bi-plus-circle"></i> Add Session
+      </button>
+    </div>
+  </form>
+
+  <div class="sessions-container" [ngClass]="{'grid-view': isGridView, 'list-view': !isGridView}">
+    <ng-container *ngIf="isGridView; else listView">
+      <div *ngFor="let session of displayedSessions$ | async" class="session-card" [@fadeInOut]>
+        <div class="video-container">
+          <iframe *ngIf="session.link" [src]="getSafeYouTubeUrl(session.link)" frameborder="0" allowfullscreen>
+          </iframe>
+        </div>
+        <div class="card-content">
+          <h3>{{ session.title }}</h3>
+          <p>{{ session.description | slice:0:100 }}{{ session.description.length > 100 ? '...' : '' }}</p>
+          <div class="card-actions">
+            <button (click)="openModal(session)" class="primary-btn">
+              <i class="bi bi-play-circle"></i> Watch
+            </button>
+            <div class="action-group">
+              <button (click)="deleteSession(session.id)" class="icon-action delete" title="Delete">
+                <i class="bi bi-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #listView>
+      <div class="sessions-table-container">
+        <table class="sessions-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let session of displayedSessions$ | async" [@fadeInOut]>
+              <td>{{ session.title }}</td>
+              <td>{{ session.description | slice:0:50 }}...</td>
+              <td>
+                <div class="table-actions">
+                  <button (click)="openModal(session)" class="icon-action" title="Watch">
+                    <i class="bi bi-play-circle"></i>
+                  </button>
+                  <button (click)="deleteSession(session.id)" class="icon-action delete" title="Delete">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="(currentPage | async) === 1">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <div class="page-info">
+      <span>Page {{ currentPage | async }} of {{ totalPages$ | async }}</span>
+      <select [ngModel]="itemsPerPage | async" (ngModelChange)="onItemsPerPageChange($event)">
+        <option [ngValue]="6">6 per page</option>
+        <option [ngValue]="12">12 per page</option>
+        <option [ngValue]="24">24 per page</option>
+      </select>
+    </div>
+    <button (click)="nextPage()" [disabled]="(currentPage | async) === (totalPages$ | async)">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal" *ngIf="selectedSession" [@modalAnimation]>
+  <div class="modal-content"><button class="close-btn" (click)="closeModal()">
+      <i class="bi bi-x"></i>
+    </button>
+    <div class="modal-header">
+      <h2>{{ selectedSession.title }}</h2>
+    </div>
+    <div class="modal-body">
+      <div class="video-container">
+        <iframe [src]="getSafeYouTubeUrl(selectedSession.link)" frameborder="0" allowfullscreen>
+        </iframe>
+      </div>
+      <p>{{ selectedSession.description }}</p>
+    </div>
+  </div>
+</div>

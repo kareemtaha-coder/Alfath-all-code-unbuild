@@ -1,0 +1,114 @@
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true"  role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">{{ 'MODAL.TITLE' | translate }}</h5>
+           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="{{ 'MODAL.FIELDS.NAME.PLACEHOLDER' | translate }}">
+              </div>
+              <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="text-danger mt-1">
+                {{ getErrorMessage('name') }}
+              </div>
+            </div>
+            
+            <!-- Country Field -->
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-globe"></i></span>
+                <input type="text" class="form-control" id="country" formControlName="country" placeholder="{{ 'MODAL.FIELDS.COUNTRY.PLACEHOLDER' | translate }}">
+              </div>
+              <div *ngIf="contactForm.get('country')?.invalid && contactForm.get('country')?.touched" class="text-danger mt-1">
+                {{ getErrorMessage('country') }}
+              </div>
+            </div>
+  
+            <!-- Phone Field -->
+            <div class="mb-3">
+              <ngx-intl-tel-input
+                [cssClass]="'form-control'"
+                [preferredCountries]="preferredCountries"
+                [enableAutoCountrySelect]="false"
+                [searchCountryFlag]="true"
+                [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name, SearchCountryField.All]"
+                [selectFirstCountry]="false"
+                [selectedCountryISO]="CountryISO.Egypt"
+                [maxLength]="15"
+                formControlName="phone"
+                [onlyCountries]="allowedCountries"
+              ></ngx-intl-tel-input>
+              <div *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched" class="text-danger mt-1">
+                Phone number is required.
+              </div>
+            </div>
+  
+            <!-- Number of Children Field -->
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-child"></i></span>
+                <input type="number" class="form-control" id="numberOfChildren" formControlName="numberOfChildren" placeholder="Number of Children">
+              </div>
+              <div *ngIf="contactForm.get('numberOfChildren')?.invalid && contactForm.get('numberOfChildren')?.touched" class="text-danger mt-1">
+                {{ getErrorMessage('numberOfChildren') }}
+              </div>
+            </div>
+  
+            <!-- Plan Choice Field -->
+            <!-- <div class="mb-3">
+              <select class="form-select" id="planChoice" formControlName="planChoice">
+                <option value="" disabled selected>Select your plan</option>
+                <option value="basic">Basic</option>
+                <option value="standard">Standard</option>
+                <option value="pro">Pro</option>
+              </select>
+              <div *ngIf="contactForm.get('planChoice')?.invalid && contactForm.get('planChoice')?.touched" class="text-danger mt-1">
+                {{ getErrorMessage('planChoice') }}
+              </div>
+            </div> -->
+  
+            <!-- Course Field -->
+            <div class="mb-3">
+              <select class="form-select" id="course" formControlName="course">
+                <option value="" disabled selected>Select your course</option>
+                <option value="quran">Quran</option>
+                <option value="hadith">Islamic</option>
+                <option value="arabic">Arabic</option>
+              </select>
+              <div *ngIf="contactForm.get('course')?.invalid && contactForm.get('course')?.touched" class="text-danger mt-1">
+                {{ getErrorMessage('course') }}
+              </div>
+            </div>
+  
+            <!-- City Field -->
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-city"></i></span>
+                <input type="text" class="form-control" id="city" formControlName="city" placeholder="Your City">
+              </div>
+              <div *ngIf="contactForm.get('city')?.invalid && contactForm.get('city')?.touched" class="text-danger mt-1">
+                {{ getErrorMessage('city') }}
+              </div>
+            </div>
+  
+           <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'MODAL.CLOSE' | translate }}</button>
+              <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">{{ 'MODAL.SUBMIT' | translate }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Notification Message -->
+  <div *ngIf="notification" class="alert" [ngClass]="{
+    'alert-success': notification.type === 'success',
+    'alert-danger': notification.type === 'error'
+  }" role="alert">
+    {{ 'MODAL.NOTIFICATION.' + notification.type.toUpperCase() | translate }}
+  </div>

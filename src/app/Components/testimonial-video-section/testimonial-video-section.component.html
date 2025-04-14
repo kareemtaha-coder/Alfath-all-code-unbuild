@@ -1,0 +1,87 @@
+<section class="testimonial-carousel py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">{{ 'testimonials.title' | translate }}</h2>
+        <div class="section">
+          <div class="header right-content">
+            <span class="popular-subject-label">{{ 'testimonials.popularSubjectLabel' | translate }}</span>
+            <h1 class="header-title">{{ 'testimonials.headerTitle' | translate }}</h1>
+            <p class="header-subtitle">
+              {{ 'testimonials.headerSubtitle' | translate }}
+            </p>
+            <div class="header-paragraph-container">
+              <div class="vertical-line"></div>
+              <p class="header-paragraph qoute">
+                {{ 'testimonials.headerQuote' | translate }}
+              </p>
+            </div>
+            <button class="explore-button" data-bs-toggle="modal" data-bs-target="#contactModal">
+              {{ 'testimonials.exploreButton' | translate }}
+            </button>
+          </div>
+            <div id="parentTestimonials" class="carousel slide" data-bs-ride="carousel" style="width: 60%;">
+                <div class="carousel-inner">
+                    <!-- Video 1 -->
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/8MsXogD38xI" title="Parent Testimonial 1"
+                                    loading="lazy" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 2 -->
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/60Nl_mwxois" title="Parent Testimonial 2"
+                                    loading="lazy" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 3 -->
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/2HVBgBhJhyo" title="Parent Testimonial 3"
+                                    loading="lazy" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 4 -->
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/DntLA7vm-7s" title="Parent Testimonial 4"
+                                    loading="lazy" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video 5 -->
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center">
+                            <div class="video-container">
+                                <iframe src="https://www.youtube.com/embed/yfNvpJEZVDI" title="Parent Testimonial 5"
+                                    loading="lazy" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carousel controls -->
+                 <button class="carousel-control-prev" type="button" data-bs-target="#parentTestimonials"
+                    data-bs-slide="prev" (click)="stopCurrentVideo()">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#parentTestimonials"
+                    data-bs-slide="next" (click)="stopCurrentVideo()">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                   <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

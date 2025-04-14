@@ -1,0 +1,100 @@
+<!-- book-pdf.component.html -->
+<div class="pdf-viewer" *ngIf="!errorMessage; else errorTemplate">
+  <!-- Main Toolbar -->
+  <div class="pdf-toolbar">
+    <!-- Page Navigation Controls -->
+    <div class="toolbar-group navigation-controls">
+      <button (click)="previousPage()" [disabled]="pageNum <= 1 || isLoading" title="Previous Page" aria-label="Previous Page">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+      <div class="page-info">
+        <input
+          type="number"
+          [(ngModel)]="goToPageInput"
+          [min]="1"
+          [max]="totalPages"
+          (keyup.enter)="goToPage()"
+          class="page-input"
+          aria-label="Go to page"
+        />
+        <span class="page-total"> / {{ totalPages }}</span>
+      </div>
+      <button (click)="nextPage()" [disabled]="pageNum >= totalPages || isLoading" title="Next Page" aria-label="Next Page">
+        <i class="fa fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Chapter Navigation -->
+    <div class="toolbar-group chapter-navigation">
+      <button (click)="toggleChapterMenu()" title="Chapters" class="chapter-button" aria-label="Toggle chapters menu">
+        <i class="fa fa-book"></i>
+        <span class="chapter-label">{{ currentChapter }}</span>
+      </button>
+    </div>
+
+    <!-- Zoom Controls -->
+    <div class="toolbar-group zoom-controls">
+      <button (click)="zoomOut()" [disabled]="scale <= 0.5" title="Zoom Out" aria-label="Zoom out">
+        <i class="fa fa-search-minus"></i>
+      </button>
+      <span class="zoom-level">{{ (scale * 100).toFixed(0) }}%</span>
+      <button (click)="zoomIn()" title="Zoom In" aria-label="Zoom in">
+        <i class="fa fa-search-plus"></i>
+      </button>
+      <button (click)="zoomFit()" title="Fit to Width" aria-label="Fit to width">
+        <i class="fa fa-arrows-alt-h"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- PDF Content Area -->
+  <div class="pdf-content">
+    <!-- PDF Canvas Container -->
+    <div #container class="pdf-container" [ngClass]="{'touch-active': isTouchDevice}">
+      <canvas #pdfCanvas></canvas>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading-overlay" *ngIf="isLoading">
+      <div class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Loading PDF...</p>
+      </div>
+    </div>
+
+    <!-- Chapter Sidebar (Floating) -->
+    <div class="chapter-sidebar" [class.active]="showChapters">
+      <div class="chapter-sidebar-content">
+        <div class="chapter-header">
+          <h3>Table of Contents</h3>
+          <button (click)="showChapters = false" class="close-button" aria-label="Close chapters menu">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+        <div class="chapter-list">
+          <div
+            *ngFor="let chapter of chapters"
+            class="chapter-item"
+            [class.active]="chapter.title === currentChapter"
+            (click)="goToChapter(chapter.pageNumber)"
+          >
+            <span class="chapter-title">{{ chapter.title }}</span>
+            <span class="chapter-page">{{ chapter.pageNumber }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="chapter-backdrop" (click)="showChapters = false"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Error Template -->
+<ng-template #errorTemplate>
+  <div class="error-container">
+    <div class="error-message">
+      <i class="fa fa-exclamation-triangle"></i>
+      <p>{{ errorMessage }}</p>
+      <button class="retry-button" (click)="retryLoading()" *ngIf="canRetry">Try Again</button>
+    </div>
+  </div>
+</ng-template>

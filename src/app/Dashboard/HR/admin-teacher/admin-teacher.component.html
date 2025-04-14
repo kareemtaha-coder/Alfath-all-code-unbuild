@@ -1,0 +1,129 @@
+<section class="teacher-section">
+  <div class="teacher-header">
+    <h2>Teachers Dashboard</h2>
+    <div class="header-actions">
+      <div class="view-toggle">
+        <button class="icon-btn" [class.active]="isGridView" (click)="toggleView(true)" title="Grid View">
+          <i class="bi bi-grid-fill"></i>
+        </button>
+        <button class="icon-btn" [class.active]="!isGridView" (click)="toggleView(false)" title="List View">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+      <button class="icon-btn" (click)="refreshData()" title="Refresh Data" [disabled]="isLoading">
+        <i class="bi bi-arrow-clockwise" [class.rotating]="isLoading"></i>
+        <span>Refresh</span>
+      </button>
+      <button class="icon-btn" (click)="downloadExcel()" title="Download Excel">
+        <i class="bi bi-file-earmark-excel"></i>
+        <span>Export</span>
+      </button>
+    </div>
+  </div>
+
+  <div [ngClass]="isGridView ? 'teacher-grid' : 'teacher-list'">
+    <ng-container *ngIf="isGridView; else listView">
+      <div *ngFor="let teacher of displayedTeachers; let i = index" class="teacher-item">
+        <div class="teacher-item-header">
+          {{ teacher.name }}
+        </div>
+        <div class="teacher-item-body">
+          <p><span class="label">ID:</span> <span>{{ i+1 }}</span></p>
+          <p><span class="label">Education:</span> <span>{{ teacher.education }}</span></p>
+          <p><span class="label">Quizzes:</span> <span>{{ teacher.quizzes }}</span></p>
+          <p><span class="label">Experience:</span> <span>{{ teacher.yearsOfExperience }} yr</span></p>
+          <p><span class="label">Phone:</span> <span>{{ teacher.phone }}</span></p>
+          <p><span class="label">National ID:</span> <span>{{ teacher.nationalId }}</span></p>
+          <p><span class="label">Exam Result:</span> <span>{{ teacher.examResult }}</span></p>
+          <p><span class="label">Birth Date:</span> <span>{{ teacher.dateOfBirth | date:'shortDate' }}</span></p>
+        </div>
+        <div class="teacher-item-actions">
+          <button class="icon-btn" (click)="showQuizzes(teacher)" title="Show Quizzes">
+            <i class="bi bi-clipboard-check"></i> <span>Exam</span>
+          </button>
+          <button class="icon-btn" (click)="deleteTeacher(teacher.id)" title="Delete Teacher">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </div>
+
+      <div *ngIf="selectedTeacher" class="quizzes-modal" style="direction: rtl;">
+        <div class="quizzes-content">
+          <div class="modal-header">
+            <h3>{{ selectedTeacher.name }}'s Quiz Results</h3>
+            <button (click)="selectedTeacher = null" class="close-btn">
+              <i class="bi bi-x"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div *ngFor="let question of selectedTeacher.solution.questions; let qIndex = index" class="question">
+              <div class="question-content" [innerHTML]="'Q' + (qIndex + 1) + ': ' + question.content"></div>
+              <div *ngFor="let choice of question.choices"
+                   class="choice"
+                   [class.chosen]="choice.isChoosen"
+                   [class.correct-answer]="choice.isCorrect" style="direction: ltr;">
+                <span class="choice-content" [innerHTML]="choice.content"></span>
+                <span *ngIf="choice.isChoosen"
+                      class="choice-status"
+                      [class.correct]="choice.isCorrect"
+                      [class.incorrect]="!choice.isCorrect">
+                  {{ choice.isCorrect ? 'Correct' : 'Incorrect' }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #listView>
+      <table class="teacher-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>ID</th>
+            <th>Education</th>
+            <th>Quizzes</th>
+            <th>Experience</th>
+            <th>Phone</th>
+            <th>National ID</th>
+            <th>Result</th>
+            <th>Birth Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let teacher of displayedTeachers; let i = index">
+            <td>{{ teacher.name }}</td>
+            <td>{{ i + 1 }}</td>
+            <td>{{ teacher.education }}</td>
+            <td>{{ teacher.quizzes }}</td>
+            <td>{{ teacher.yearsOfExperience }} yr</td>
+            <td>{{ teacher.phone }}</td>
+            <td>{{ teacher.nationalId }}</td>
+            <td>{{ teacher.examResult }}</td>
+            <td>{{ teacher.dateOfBirth | date:'shortDate' }}</td>
+            <td>
+              <button class="icon-btn" (click)="showQuizzes(teacher)" title="Show Quizzes" style="margin-right: 0.25rem;">
+                <i class="bi bi-clipboard-check"></i>
+              </button>
+              <button class="icon-btn" (click)="deleteTeacher(teacher.id)" title="Delete Teacher">
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </div>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</section>

@@ -1,0 +1,74 @@
+<header class="sticky-top py-2" [ngClass]="{ scrolled: isScrolled, 'lang-ar': translate.currentLang === 'ar' }">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand bounce" href="#" aria-label="Home">
+          <img src="assets/images/1.png" alt="logo" class="img-fluid" width="100" height="45" />
+        </a>
+       
+        <!-- Language select for mobile -->
+        <select class="language-select d-lg-none" (change)="changeLanguage($event)" aria-label="Select Language">
+          <option value="en" [selected]="translate.currentLang === 'en'">{{ 'navbar.language.english' | translate }}</option>
+          <option value="ar" [selected]="translate.currentLang === 'ar'">{{ 'navbar.language.arabic' | translate }}</option>
+        </select>
+  
+        <!-- Desktop menu -->
+        <div class="collapse navbar-collapse d-none d-lg-flex">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown" (mouseenter)="showDropdown()" (mouseleave)="hideDropdown()">
+              <a class="nav-link dropdown-toggle" role="button">
+                <i class="fas fa-home"></i> {{ 'navbar.home' | translate }}
+              </a>
+              <ul class="dropdown-menu" [class.show]="dropdownOpen" (mouseenter)="keepDropdownOpen()" (mouseleave)="hideDropdown()">
+                <li *ngFor="let item of menuItems">
+                  <a class="dropdown-item" (click)="navigateToFragment(item.fragment)">
+                    <i [class]="item.icon"></i>
+                    <span>{{ item.label | translate }}</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/hiring" routerLinkActive="active"><i class="fas fa-briefcase"></i> {{ 'navbar.hiring' | translate }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/blogs" routerLinkActive="active"><i class="fa-solid fa-book-bookmark"></i> {{ 'navbar.blogs' | translate }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/sessions" routerLinkActive="active">
+                <i class="far fa-calendar-alt" aria-hidden="true"></i>
+                <span>{{ 'navbar.sessions' | translate }}</span>
+              </a>
+            </li>
+          </ul>
+          <a href="#" class="btn btn-primary btn-rounded" data-bs-toggle="modal" data-bs-target="#contactModal">
+            <i class="fas fa-user-plus"></i> {{ 'navbar.joinNow' | translate }}
+          </a>
+          <select class="language-select ms-3" (change)="changeLanguage($event)" aria-label="Select Language">
+            <option value="en" [selected]="translate.currentLang === 'en'">{{ 'navbar.language.english' | translate }}</option>
+            <option value="ar" [selected]="translate.currentLang === 'ar'">{{ 'navbar.language.arabic' | translate }}</option>
+          </select>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <nav style="height: 80px; width: 100%;"></nav>
+  <!-- Bottom Navigation for Mobile -->
+  <nav class="bottom-nav d-lg-none">
+    <a [ngClass]="{'active': router.url === '/'}" (click)="navigateToFragment('hero')">
+      <i class="fas fa-home"></i>
+      <span>{{ 'navbar.home' | translate }}</span>
+    </a>
+    <a routerLink="/hiring" routerLinkActive="active">
+      <i class="fas fa-briefcase"></i>
+      <span>{{ 'navbar.hiring' | translate }}</span>
+    </a>
+    <a routerLink="/blogs" routerLinkActive="active">
+      <i class="fas fa-feather-alt"></i>
+      <span>{{ 'navbar.blogs' | translate }}</span>
+    </a>
+    <a routerLink="/sessions" routerLinkActive="active">
+      <i class="far fa-calendar-alt"></i>
+      <span>{{ 'navbar.sessions' | translate }}</span>
+    </a>
+  </nav>
+  <app-contact-modal></app-contact-modal>

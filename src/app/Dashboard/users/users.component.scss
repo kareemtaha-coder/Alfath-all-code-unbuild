@@ -1,0 +1,267 @@
+@import '../../../styles.scss';
+
+// Variables
+$secondary-color: #50c878;
+$background-color: #f0f4f8;
+$text-color: #4a4a4a;
+$card-bg: #ffffff;
+$border-color: #e1e4e8;
+$shadow-color: rgba(0, 0, 0, 0.08);
+$border-radius: 8px;
+$transition-speed: 0.2s;
+$danger-color: #dc3545; // Added danger color
+
+// Mixins
+@mixin card-style {
+  background-color: $card-bg;
+  border-radius: $border-radius;
+  box-shadow: 0 3px 5px $shadow-color;
+  transition: transform $transition-speed ease;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Component Styles
+.user-section {
+  background-color: $background-color;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $primary-color;
+  }
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.view-toggle {
+  display: flex;
+  background-color: $card-bg;
+  border-radius: $border-radius;
+  padding: 0.25rem;
+  box-shadow: 0 1px 3px $shadow-color;
+}
+
+.icon-btn {
+  @include flex-center;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  font-weight: 900;
+  text-decoration: none;
+  transition: background-color $transition-speed ease;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: $text-color;
+  margin: 2px;
+  
+  &:hover, &.active {
+    background-color: lighten($primary-color, 10%);
+    color: $card-bg;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.user-item {
+  @include card-style;
+  overflow: hidden;
+  padding: 1rem;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px $shadow-color;
+  }
+}
+
+.user-item-header {
+  background-color: $primary-color;
+  color: $card-bg;
+  padding: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-item-body {
+  padding: 0.8rem;
+
+  p {
+    margin: 0.4rem 0;
+    display: flex;
+    justify-content: space-between;
+    color: $text-color;
+  }
+
+  .label {
+    font-weight: 500;
+    color: lighten($text-color, 20%);
+  }
+}
+
+.user-item-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.8rem;
+  
+  .icon-btn {
+    margin-left: 0.5rem;
+
+    &.contact-toggle {
+      background-color: $danger-color;
+      color: $card-bg;
+      
+      &.contacted {
+        background-color: $secondary-color;
+      }
+    }
+  }
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.75rem;
+
+  th, td {
+    padding: 1rem;
+    text-align: left;
+  }
+
+  th {
+    background-color: $primary-color;
+    color: $card-bg;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  tbody tr {
+    @include card-style;
+    transition: transform $transition-speed ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    td:first-child {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+
+    td:last-child {
+      border-radius: 0 $border-radius $border-radius 0;
+
+      .icon-btn {
+        &.contact-toggle {
+          background-color: $danger-color;
+          color: $card-bg;
+          
+          &.contacted {
+            background-color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+
+  button {
+    @extend .icon-btn;
+    background-color: $primary-color;
+    color: $card-bg;
+    margin: 0 0.5rem;
+    font-size: 1.2rem; 
+
+    &:disabled {
+      background-color: lighten($primary-color, 20%);
+      color: $card-bg;
+    }
+  }
+
+  span {
+    font-weight: 600;
+    color: $text-color;
+  }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.rotating {
+  animation: rotate 1s linear infinite;
+}
+
+// Media Queries
+@media (max-width: 768px) {
+  .user-section {
+    padding: 1rem;
+  }
+
+  .user-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .user-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .user-table {
+    th, td {
+      padding: 0.75rem;
+      font-size: 0.85rem;
+    }
+  }
+}

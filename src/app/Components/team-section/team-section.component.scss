@@ -1,0 +1,114 @@
+@import '../../../styles.scss';
+
+.our-team {
+    padding: 60px 0;
+  }
+  
+  .our-team h2 {
+    color: $primary-color;
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  .our-team h2::before {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 5px;
+    background:  $primary-color;
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .team-member {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+    margin-bottom: 20px;
+  }
+  
+  .team-member::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($primary-color ,.2);
+    transition: opacity 0.4s ease-in-out;
+    opacity: 0;
+  }
+  
+  
+  .team-member:hover::before {
+    opacity: 1;
+    
+  }
+  
+  .photo-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .photo-container img {
+    width: 100%;
+    height: auto;
+    border-bottom: 4px solid $primary-color;
+    transition: transform 0.4s ease-in-out, filter 0.4s ease-in-out;
+  }
+  
+  .team-member:hover .photo-container img {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+  
+  .info {
+    padding: 20px;
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+  
+  .name {
+    font-family: 'Comic Sans MS', cursive;
+    color:  $primary-color;
+    margin: 10px 0;
+    font-size: 1.5rem;
+    animation: bounceIn 1s ease-out;
+  }
+  
+  .role {
+    font-weight: bold;
+    color: #ff4081;
+    margin: 5px 0;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  @keyframes bounceIn {
+    0% { opacity: 0; transform: translateY(-30px); }
+    50% { opacity: 1; transform: translateY(15px); }
+    100% { transform: translateY(0); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .team-member {
+      margin-bottom: 20px;
+    }
+  }
+  
+

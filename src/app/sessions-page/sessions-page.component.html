@@ -1,0 +1,75 @@
+<div class="sessions-page">
+  <div class="main-video">
+    <div class="loading-spinner" *ngIf="isLoading | async">
+      <div class="spinner"></div>
+      <p>Loading amazing content...</p>
+    </div>
+
+    <div class="error-message" *ngIf="error | async as errorMessage">
+      <div class="alert alert-danger" role="alert">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ errorMessage }}
+      </div>
+    </div>
+
+    <div class="current-session" *ngIf="currentSession">
+      <h2>
+        <i class="fas fa-bar-chart"></i>
+        {{ currentSession.title }}
+      </h2>
+      <div class="video-container">
+        <iframe 
+          [src]="currentSession.safeUrl" 
+          frameborder="0" 
+          allowfullscreen
+          loading="lazy"
+          title="Current session video"
+        ></iframe>
+      </div>
+      <div class="description-container">
+        <p [class.expanded]="isDescriptionExpanded" [innerHTML]="currentSession.description"></p>
+        <button 
+          (click)="toggleDescription()" 
+          class="expand-button"
+          [attr.aria-label]="isDescriptionExpanded ? 'Collapse description' : 'Expand description'"
+          [attr.data-tooltip]="isDescriptionExpanded ? 'Show less' : 'Show more'"
+        >
+          <i class="fas" [ngClass]="{'fa-chevron-down': !isDescriptionExpanded, 'fa-chevron-up': isDescriptionExpanded}"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <h3>More Sessions</h3>
+  <div class="session-grid">
+    <div 
+      class="session-card" 
+      *ngFor="let session of sessionList" 
+      (click)="selectSession(session)"
+      (keydown)="handleKeyDown($event, session)"
+      [class.active]="session.id === currentSession?.id"
+      tabindex="0"
+      [attr.aria-label]="'Select session: ' + session.title"
+      role="button"
+    >
+      <div class="card-video-container">
+        <iframe 
+          [src]="session.safeUrl" 
+          frameborder="0" 
+          allowfullscreen
+          loading="lazy"
+          [title]="session.title"
+        ></iframe>
+      </div>
+      <div class="card-content">
+        <h4>
+          <i class="fas fa-tag"></i>
+          {{ session.title }}
+        </h4>
+        <p [innerHTML]="truncateDescription(session.description)"></p>
+      </div>
+    </div>
+  </div>
+
+ 
+</div>

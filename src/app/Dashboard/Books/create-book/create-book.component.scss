@@ -1,0 +1,296 @@
+
+@import "../../../../styles.scss";
+/* Form container */
+.form-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* Labels */
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input fields */
+.input-field,
+.textarea-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border 0.3s ease-in-out;
+}
+
+.input-field:focus,
+.textarea-field:focus {
+  border-color: $primary-color;
+  outline: none;
+}
+
+/* Textarea field */
+.textarea-field {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* File upload styling */
+.file-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.file-input {
+  padding: 8px;
+  font-size: 14px;
+}
+
+/* Submit button */
+.submit-button {
+  background: $primary-color;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.submit-button:hover {
+  background: $primary-color;
+}
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.text-danger {
+  font-size: 14px;
+}
+
+.nav-tabs .nav-link {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.btn-primary {
+  width: 100%;
+}
+.drop-zone {
+  border: 1px dashed $primary-color;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(0, 102, 204, 0.082);
+}
+
+.drop-zone:hover {
+  background: #f8f9fa;
+}
+
+.image-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+/* Form container styling */
+.container {
+  max-width: 800px;
+}
+
+/* Card styling */
+.card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  .card-header {
+    border-bottom: none;
+    background-color: $primary-color;
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Nav tabs styling */
+.nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+
+  .nav-item {
+    margin-bottom: -1px;
+  }
+
+  .nav-link {
+    border: none;
+    color: #6c757d;
+    padding: 0.75rem 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      color: #495057;
+    }
+
+    &.active {
+      color: #0d6efd;
+      border-bottom: 2px solid $primary-color;
+      background-color: transparent;
+    }
+  }
+}
+
+/* Form controls styling */
+.form-control {
+  border-radius: 6px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ced4da;
+  transition: all 0.2s ease;
+
+  &:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    border-color: #86b7fe;
+  }
+
+  &.is-invalid {
+    border-color: #dc3545;
+    background-image: none;
+  }
+}
+
+/* Form-related elements */
+.form-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.invalid-feedback {
+  font-size: 0.875rem;
+}
+
+/* Drop zone styling */
+.drop-zone {
+  border: 2px dashed $primary-color;
+  background-color: rgba(13, 110, 253, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+  }
+
+  &.drag-active {
+    background-color: rgba(13, 110, 253, 0.15);
+    border-color: $primary-color;
+  }
+
+  &.is-invalid {
+    border-color: #dc3545;
+    background-color: rgba(220, 53, 69, 0.05);
+
+    &:hover, &.drag-active {
+      background-color: rgba(220, 53, 69, 0.1);
+    }
+  }
+}
+
+/* Button styling */
+.btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    width: 140px;
+
+    &:hover {
+      background-color: #0b5ed7;
+      border-color: #0a58ca;
+    }
+  }
+
+  &-success {
+    background-color: #198754;
+    border-color: #198754;
+
+    &:hover {
+      background-color: #157347;
+      border-color: #146c43;
+    }
+  }
+
+  &-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+
+    &:hover {
+      background-color: #5c636a;
+      border-color: #565e64;
+    }
+  }
+
+  &-outline-primary {
+    color: #0d6efd;
+    border-color: #0d6efd;
+
+    &:hover {
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      color: white;
+    }
+  }
+}
+
+/* Alert styling */
+.alert {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+
+  &-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+  }
+
+  &-danger {
+    background-color: #f8d7da;
+    color: #842029;
+  }
+
+  .btn-close {
+    padding: 0.75rem;
+  }
+}
+
+/* Image preview styling */
+.img-thumbnail {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}

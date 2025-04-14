@@ -1,0 +1,488 @@
+// Variables
+@import "../../../styles.scss";
+$danger-color: #ff4757;
+$success-color: #2ed573;
+$text-color: #2f3542;
+$bg-color: #f1f2f6;
+$border-color: #dfe4ea;
+$radius: 16px;
+$shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin card-style {
+  background: white;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Global Styles
+body {
+  font-family: "Inter", sans-serif;
+  background: $bg-color;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+.quiz-management-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  direction: rtl;
+
+
+  .quiz-header {
+    @include flex-center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: $radius;
+    box-shadow: $shadow;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: $primary-color;
+      margin: 0;
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: $transition;
+      border: none;
+      cursor: pointer;
+
+      &-add-quiz {
+        background: $primary-color;
+        color: white;
+
+        &:hover {
+          background: darken($primary-color, 10%);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+
+  // Loading State
+  .loading-state {
+    .skeleton-loader {
+      display: grid;
+      gap: 1.5rem;
+
+      .skeleton-card {
+        @include card-style;
+        height: 150px;
+        background: linear-gradient(
+          90deg,
+          #f0f0f0 25%,
+          #e0e0e0 50%,
+          #f0f0f0 75%
+        );
+        background-size: 200% 100%;
+        animation: shimmer 1.5s infinite;
+      }
+    }
+  }
+
+  // Empty State
+  .empty-state {
+    @include flex-center;
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem 0;
+
+    img {
+      max-width: 300px;
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      color: lighten($text-color, 30%);
+      font-size: 1.1rem;
+    }
+  }
+
+  // Quiz List
+  .quiz-list {
+    display: grid;
+    gap: 1.5rem;
+
+    .quiz-item {
+      @include card-style;
+      padding: 1.5rem;
+      position: relative;
+
+      &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+
+        h2 {
+          font-size: 1.75rem;
+          margin: 0;
+          color: $text-color;
+        }
+
+        .quiz-actions {
+          display: flex;
+          gap: 0.5rem;
+
+          .btn {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            transition: $transition;
+
+            &-edit {
+              background: rgba($primary-color, 0.1);
+              color: $primary-color;
+
+              &:hover {
+                background: rgba($primary-color, 0.2);
+              }
+            }
+
+            &-delete {
+              background: rgba($danger-color, 0.1);
+              color: $danger-color;
+
+              &:hover {
+                background: rgba($danger-color, 0.2);
+              }
+            }
+          }
+        }
+      }
+
+      .btn-manage-questions {
+        width: 100%;
+        margin: 1rem 0;
+        background: rgba($secondary-color, 0.1);
+        color: $secondary-color;
+        border: none;
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+          background: rgba($secondary-color, 0.2);
+        }
+      }
+
+      // Questions Section
+      .questions-section {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid $border-color;
+
+        .question-item {
+          @include card-style;
+          padding: 1rem;
+          margin: 1rem 0;
+          background: lighten($bg-color, 2%);
+
+          .question-content {
+            p {
+              margin: 0 0 1rem 0;
+              line-height: 1.6;
+            }
+          }
+
+          .choices-list {
+            display: grid;
+            gap: 0.75rem;
+            margin: 1rem 0;
+
+            .choice-item {
+              display: flex;
+              align-items: center;
+              gap: 0.75rem;
+              padding: 0.75rem;
+              background: white;
+              border-radius: 8px;
+              border: 1px solid $border-color;
+              transition: $transition;
+
+              &:hover {
+                transform: translateX(5px);
+              }
+
+              .choice-icon {
+                &.correct {
+                  color: $success-color;
+                }
+
+                i {
+                  font-size: 1.2rem;
+                }
+              }
+
+              .choice-text {
+                flex-grow: 1;
+              }
+            }
+          }
+
+          .question-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+
+            .btn-toggle-status {
+              background: rgba($danger-color, 0.1);
+              color: $danger-color;
+              position: relative;
+              overflow: hidden;
+              border: none;
+              cursor: pointer;
+              transition: $transition;
+
+              &.active {
+                background: rgba($danger-color, 0.2);
+              }
+
+              &[disabled] {
+                opacity: 0.7;
+                cursor: not-allowed;
+              }
+
+              .fa-spinner {
+                animation: spin 1s linear infinite;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Modals
+  .modal-overlay {
+    @include flex-center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+
+    .modal-content {
+      @include card-style;
+      width: 90%;
+      max-width: 600px;
+      padding: 2rem;
+      animation: modalEnter 0.3s ease;
+      overflow: auto;
+      max-height: 90vh;
+
+      h2 {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        color: $primary-color;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 600;
+          color: $text-color;
+        }
+
+        input,
+        .quill-editor {
+          width: 100%;
+          padding: 0.75rem;
+          border: 1px solid $border-color;
+          border-radius: 8px;
+          transition: $transition;
+
+          &:focus {
+            border-color: $primary-color;
+            box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+          }
+        }
+
+        .error-message {
+          color: $danger-color;
+          font-size: 0.875rem;
+          margin-top: 0.5rem;
+        }
+      }
+
+      .choices-section {
+        .choice-item {
+          margin: 1rem 0;
+          padding: 1rem;
+          background: lighten($bg-color, 2%);
+          border-radius: 8px;
+
+          .choice-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+
+            .correct-choice-label {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              color: $success-color;
+              font-weight: 500;
+            }
+
+            .btn-remove-choice {
+              color: $danger-color;
+              background: none;
+              padding: 0;
+              border: none;
+              cursor: pointer;
+
+              &:hover {
+                color: darken($danger-color, 10%);
+              }
+            }
+          }
+        }
+
+        .btn-add-choice {
+          width: 100%;
+          margin-top: 1rem;
+          background: rgba($primary-color, 0.1);
+          color: $primary-color;
+          border: none;
+          cursor: pointer;
+          transition: $transition;
+
+          &:hover {
+            background: rgba($primary-color, 0.2);
+          }
+        }
+      }
+
+      .modal-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1rem;
+        margin-top: 2rem;
+
+        .btn-cancel {
+          background: rgba($text-color, 0.1);
+          color: $text-color;
+          border: none;
+          cursor: pointer;
+          transition: $transition;
+
+          &:hover {
+            background: rgba($text-color, 0.2);
+          }
+        }
+
+        .btn-save {
+          background: $primary-color;
+          color: white;
+          border: none;
+          cursor: pointer;
+          transition: $transition;
+
+          &:hover {
+            background: darken($primary-color, 10%);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes modalEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Quill Editor Customization
+.ql-toolbar {
+  border-radius: 8px 8px 0 0;
+  border-color: $border-color !important;
+}
+
+.ql-container {
+  border-radius: 0 0 8px 8px;
+  border-color: $border-color !important;
+  min-height: 150px;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .quiz-management-container {
+    .quiz-header {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .quiz-item {
+      &-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+
+        .quiz-actions {
+          width: 100%;
+          justify-content: flex-end;
+        }
+      }
+    }
+
+    .modal-content {
+      width: 95%;
+      padding: 1rem;
+    }
+  }
+}

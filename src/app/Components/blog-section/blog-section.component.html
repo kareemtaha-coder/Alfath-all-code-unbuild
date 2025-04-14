@@ -1,0 +1,39 @@
+<section class="blogs">
+  <div class="container">
+    <h2 class="section-title">Latest From Our Blog</h2>
+    <p class="section-subtitle">Stay updated with our latest insights and stories</p>
+
+    <ng-container >
+      <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4" *ngFor="let blog of blogs">
+          <article class="blog-card">
+            <div class="blog-card-image">
+              <img [src]="imageUrl + blog.imageName"
+               [alt]="blog.title" loading="lazy">
+            </div>
+            <div class="blog-card-content">
+              <h3 class="blog-title">{{blog.title}}</h3>
+              <div class="blog-metadata">
+                <span *ngIf="blog.author" class="blog-author">
+                  <i class="fas fa-user"></i> {{blog.author}}
+                </span>
+                <span class="blog-date">
+                  <i class="fas fa-calendar"></i>
+                  <span class="blog-author">{{blog.uploadedOn |date}}</span>
+                </span>
+                <span *ngIf="blog.writtenBy !='null'"  class="meta-item">
+                  <i class="far fa-user"></i>
+                  <span>{{ blog.writtenBy }}</span>
+              </span>
+              </div>
+              <p class=" flex-grow-1" [innerHTML]="getFirstTwoStrongOrWords(blog.content)"></p>
+              <a [routerLink]="['/blog', blog.id]" class="btn btn-primary">
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>

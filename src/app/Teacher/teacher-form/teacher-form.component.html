@@ -1,0 +1,162 @@
+<div class="container hiring">
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="spinner">
+    <div class="spinner-inner"></div>
+  </div>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message" role="alert">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Teacher Form -->
+  <form [formGroup]="teacherForm" *ngIf="!quizStarted && !submitted" (ngSubmit)="startQuiz()" class="teacher-form">
+    <h2>{{ 'HIRING-Teacher.TEACHER_FORM.TITLE' | translate }}</h2>
+
+    <!-- Name -->
+    <div class="form-group">
+      <label for="name">{{ 'HIRING-Teacher.TEACHER_FORM.NAME.LABEL' | translate }}</label>
+      <input id="name" formControlName="name" type="text" required>
+      <div *ngIf="teacherForm.get('name')?.invalid && teacherForm.get('name')?.touched" class="error-text">
+        {{ 'HIRING-Teacher.TEACHER_FORM.NAME.ERROR' | translate }}
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="form-group">
+      <label for="education">{{ 'HIRING-Teacher.TEACHER_FORM.EDUCATION.LABEL' | translate }}</label>
+      <input id="education" formControlName="education" type="text" required>
+      <div *ngIf="teacherForm.get('education')?.invalid && teacherForm.get('education')?.touched" class="error-text">
+        {{ 'HIRING-Teacher.TEACHER_FORM.EDUCATION.ERROR' | translate }}
+      </div>
+    </div>
+
+    <!-- Quizzes (Fields) -->
+    <div class="form-group">
+      <label>{{ 'HIRING-Teacher.TEACHER_FORM.FIELDS.LABEL' | translate }}</label>
+      <div class="checkbox-group">
+        <div *ngFor="let quiz of quizzes" class="checkbox-item">
+          <input type="checkbox" [value]="quiz.id" (change)="onCheckboxChange($event, quiz.id)" [id]="quiz.id">
+          <label [for]="quiz.id">{{ quiz.title }}</label>
+        </div>
+      </div>
+      <div *ngIf="selectedQuizzes.invalid && (selectedQuizzes.dirty || selectedQuizzes.touched)" class="error-text">
+        {{ 'HIRING-Teacher.TEACHER_FORM.FIELDS.ERROR' | translate }}
+      </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="form-group">
+      <label for="phone">{{ 'HIRING-Teacher.TEACHER_FORM.PHONE.LABEL' | translate }}</label>
+      <ngx-intl-tel-input
+        [cssClass]="'phone-input'"
+        [preferredCountries]="[CountryISO.UnitedStates, CountryISO.UnitedKingdom]"
+        [enableAutoCountrySelect]="false"
+        [searchCountryFlag]="true"
+        [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name , SearchCountryField.All]"
+        [selectFirstCountry]="false"
+        [selectedCountryISO]="CountryISO.Egypt"
+        [maxLength]="15"
+        formControlName="phone"
+        [onlyCountries]="allowedCountries"
+      ></ngx-intl-tel-input>
+      <div *ngIf="teacherForm.get('phone')?.invalid && teacherForm.get('phone')?.touched" class="error-text">
+        {{ 'HIRING-Teacher.TEACHER_FORM.PHONE.ERROR' | translate }}
+      </div>
+    </div>
+
+    <!-- National ID -->
+    <div class="form-group">
+      <label for="nationalId">{{ 'HIRING-Teacher.TEACHER_FORM.NATIONAL_ID.LABEL' | translate }}</label>
+      <input id="nationalId" formControlName="nationalId" type="text" required>
+      <div *ngIf="teacherForm.get('nationalId')?.invalid && teacherForm.get('nationalId')?.touched" class="error-text">
+        {{ 'HIRING-Teacher.TEACHER_FORM.NATIONAL_ID.ERROR' | translate }}
+      </div>
+    </div>
+
+    <!-- Years of Experience and Date of Birth -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="yearsOfExperience">{{ 'HIRING-Teacher.TEACHER_FORM.YEARS_OF_EXPERIENCE.LABEL' | translate }}</label>
+        <input id="yearsOfExperience" formControlName="yearsOfExperience" type="number" required>
+        <div *ngIf="teacherForm.get('yearsOfExperience')?.invalid && teacherForm.get('yearsOfExperience')?.touched" class="error-text">
+          {{ 'HIRING-Teacher.TEACHER_FORM.YEARS_OF_EXPERIENCE.ERROR' | translate }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dateOfBirth">{{ 'HIRING-Teacher.TEACHER_FORM.DATE_OF_BIRTH.LABEL' | translate }}</label>
+        <input id="dateOfBirth" formControlName="dateOfBirth" type="date" required>
+        <div *ngIf="teacherForm.get('dateOfBirth')?.invalid && teacherForm.get('dateOfBirth')?.touched" class="error-text">
+          {{ 'HIRING-Teacher.TEACHER_FORM.DATE_OF_BIRTH.ERROR' | translate }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="button-group">
+      <button type="submit" class="btn btn-primary" [disabled]="!teacherForm.valid">
+        {{ 'HIRING-Teacher.START_QUIZ_BUTTON' | translate }}
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="resetComponent()">
+        {{ 'HIRING-Teacher.RESET_BUTTON' | translate }}
+      </button>
+    </div>
+  </form>
+
+  <!-- Quiz Section -->
+  <div *ngIf="quizStarted && !quizEnded" class="quiz-section">
+    <h2>{{ 'QUIZ.TITLE' | translate }}</h2>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div class="progress" [style.width.%]="progressPercentage">
+        {{progressPercentage | number:'1.0-0'}}%
+      </div>
+    </div>
+
+    <!-- Timer -->
+    <p class="timer">{{ 'QUIZ.TIME_LEFT' | translate: {seconds: timeLeft} }}</p>
+
+    <!-- Question -->
+    <div class="question-card">
+      <img src="../../../assets/images/people(1).png" width="50">
+      <h3>{{ 'QUIZ.QUESTION' | translate: {number: currentQuestionIndex + 1, total: quizQuestions.length} }}</h3>
+      <p [innerHTML]="quizQuestions[currentQuestionIndex].content"></p>
+
+      <!-- Answer Options -->
+      <div class="answer-options">
+        <button
+          *ngFor="let choice of quizQuestions[currentQuestionIndex].choices"
+          class="answer-option"
+          (click)="selectAnswer(choice.id)"
+          (keydown)="onKeyDown($event, choice.id)"
+          [ngClass]="{'selected': quizQuestions[currentQuestionIndex].userChoiceId === choice.id}"
+          [attr.aria-pressed]="quizQuestions[currentQuestionIndex].userChoiceId === choice.id"
+        >
+          <span [innerHTML]="choice.content"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- End Quiz Button -->
+    <button (click)="endQuiz()" class="btn btn-danger">{{ 'QUIZ.END_QUIZ' | translate }}</button>
+  </div>
+
+  <!-- Quiz Results -->
+  <div *ngIf="quizEnded && !submitted" class="quiz-results">
+    <h2>{{ 'QUIZ_RESULTS.TITLE' | translate }}</h2>
+    <p>{{ 'QUIZ_RESULTS.PROMPT' | translate }}</p>
+    <div class="button-group">
+      <button (click)="restartQuiz()" class="btn btn-secondary">{{ 'QUIZ_RESULTS.RESTART_BUTTON' | translate }}</button>
+      <button (click)="resetComponent()" class="btn btn-secondary">{{ 'QUIZ_RESULTS.RESET_BUTTON' | translate }}</button>
+      <button (click)="submitQuizSolutions()" class="btn btn-primary">{{ 'QUIZ_RESULTS.SUBMIT_BUTTON' | translate }}</button>
+    </div>
+  </div>
+
+  <!-- Submission Confirmation -->
+  <div *ngIf="submitted && submissionSuccessful" class="submission-confirmation">
+    <h2>{{ 'SUBMISSION_CONFIRMATION.TITLE' | translate }}</h2>
+    <p>{{ 'SUBMISSION_CONFIRMATION.MESSAGE' | translate }}</p>
+    <p>{{ 'SUBMISSION_CONFIRMATION.SCORE' | translate: { score, total: quizQuestions.length } }}</p>
+  </div>
+</div>

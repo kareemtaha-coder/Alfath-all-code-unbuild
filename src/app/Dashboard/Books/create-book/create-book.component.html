@@ -1,0 +1,194 @@
+<div class= "mt-4">
+  <!-- Feedback Messages -->
+  <div *ngIf="submissionSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="bi bi-check-circle-fill me-2"></i>
+    Book has been successfully added to the library!
+    <button type="button" class="btn-close" (click)="submissionSuccess = false"></button>
+  </div>
+
+  <div *ngIf="submissionError" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    {{ submissionError }}
+    <button type="button" class="btn-close" (click)="submissionError = ''"></button>
+  </div>
+
+  <!-- Form Card -->
+  <div class="card shadow-sm">
+    <div class="card-header text-white">
+      <h4 class="mb-0"><i class="bi bi-book me-2"></i>Add New Book</h4>
+    </div>
+
+    <div class="card-body">
+      <!-- Tabs Navigation -->
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="activeTab === 'infoTab'" (click)="switchTab('infoTab')">
+            <i class="bi bi-info-circle me-1"></i> Book Information
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [class.active]="activeTab === 'mediaTab'" (click)="switchTab('mediaTab')">
+            <i class="bi bi-file-earmark me-1"></i> Media Files
+          </a>
+        </li>
+      </ul>
+
+      <!-- Form Content -->
+      <form [formGroup]="bookForm" (ngSubmit)="onSubmit()" class="mt-3">
+        <!-- Tab 1: Book Info -->
+        <div [hidden]="activeTab !== 'infoTab'">
+          <div class="form-group mb-3">
+            <label for="title" class="form-label">Title <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              id="title"
+              formControlName="Title"
+              class="form-control"
+              [class.is-invalid]="bookForm.get('Title')?.invalid && bookForm.get('Title')?.touched"
+            />
+            <div class="invalid-feedback" *ngIf="bookForm.get('Title')?.invalid && bookForm.get('Title')?.touched">
+              Title is required
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="description" class="form-label">Description <span class="text-danger">*</span></label>
+            <textarea
+              id="description"
+              formControlName="Description"
+              class="form-control"
+              rows="4"
+              [class.is-invalid]="bookForm.get('Description')?.invalid && bookForm.get('Description')?.touched"
+            ></textarea>
+            <div class="invalid-feedback" *ngIf="bookForm.get('Description')?.invalid && bookForm.get('Description')?.touched">
+              Description is required
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="part" class="form-label">Part (Optional)</label>
+            <input type="text" id="part" formControlName="Part" class="form-control" />
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="author" class="form-label">Author <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              id="author"
+              formControlName="Author"
+              class="form-control"
+              [class.is-invalid]="bookForm.get('Author')?.invalid && bookForm.get('Author')?.touched"
+            />
+            <div class="invalid-feedback" *ngIf="bookForm.get('Author')?.invalid && bookForm.get('Author')?.touched">
+              Author is required
+            </div>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="reviewer" class="form-label">Reviewer <span class="text-danger">*</span></label>
+            <input
+              type="text"
+              id="reviewer"
+              formControlName="Reviewer"
+              class="form-control"
+              [class.is-invalid]="bookForm.get('Reviewer')?.invalid && bookForm.get('Reviewer')?.touched"
+            />
+            <div class="invalid-feedback" *ngIf="bookForm.get('Reviewer')?.invalid && bookForm.get('Reviewer')?.touched">
+              Reviewer is required
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mt-4">
+            <button type="button" class="btn btn-secondary">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="switchTab('mediaTab')">
+              Next <i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 2: Media -->
+        <div [hidden]="activeTab !== 'mediaTab'">
+          <div class="form-group mb-4">
+            <label class="form-label">Cover Image <span class="text-danger">*</span></label>
+            <div
+              class="drop-zone position-relative p-4 rounded"
+              [class.is-invalid]="bookForm.get('CoverImage')?.invalid && bookForm.get('CoverImage')?.touched"
+              [class.drag-active]="false"
+              (dragover)="onDragOver($event)"
+              (dragleave)="onDragLeave($event)"
+              (drop)="onDrop($event, 'CoverImage')"
+            >
+              <div *ngIf="!coverImagePreview" class="text-center py-4">
+                <i class="bi bi-cloud-arrow-up display-4 text-primary"></i>
+                <p class="mb-1">Drag & drop a cover image here</p>
+                <p class="text-muted small mb-0">or</p>
+                <button type="button" class="btn btn-outline-primary mt-2" (click)="fileInput.click()">
+                  <i class="bi bi-image me-1"></i> Browse Files
+                </button>
+                <input #fileInput type="file" (change)="onFileSelect($event, 'CoverImage')" hidden accept="image/*" />
+              </div>
+
+              <div *ngIf="coverImagePreview" class="text-center">
+                <div class="position-relative d-inline-block">
+                  <img [src]="coverImagePreview" alt="Cover Preview" class="img-thumbnail" style="max-height: 200px">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-danger position-absolute top-0 end-0 rounded-circle"
+                    (click)="coverImagePreview = null; bookForm.get('CoverImage')?.setValue(null)"
+                  >
+                    <i class="bi bi-x"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="invalid-feedback" *ngIf="bookForm.get('CoverImage')?.invalid && bookForm.get('CoverImage')?.touched">
+              Cover image is required
+            </div>
+
+            <div class="text-danger small mt-1" *ngIf="imageError">
+              <i class="bi bi-exclamation-circle me-1"></i> {{ imageError }}
+            </div>
+          </div>
+
+          <div class="form-group mb-4">
+            <label class="form-label">PDF File <span class="text-danger">*</span></label>
+            <div class="input-group">
+              <input
+                type="file"
+                class="form-control"
+                (change)="onFileSelect($event, 'Pdf')"
+                accept=".pdf"
+                [class.is-invalid]="bookForm.get('Pdf')?.invalid && bookForm.get('Pdf')?.touched || pdfError"
+              />
+              <label class="input-group-text"><i class="bi bi-file-earmark-pdf"></i></label>
+            </div>
+
+            <div class="invalid-feedback" *ngIf="bookForm.get('Pdf')?.invalid && bookForm.get('Pdf')?.touched">
+              PDF file is required
+            </div>
+
+            <div class="text-danger small mt-1" *ngIf="pdfError">
+              <i class="bi bi-exclamation-circle me-1"></i> {{ pdfError }}
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mt-4">
+            <button type="button" class="btn btn-secondary" (click)="switchTab('infoTab')">
+              <i class="bi bi-arrow-left me-1"></i> Back
+            </button>
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="bookForm.invalid || isSubmitting"
+            >
+              <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+              <i *ngIf="!isSubmitting" class="bi bi-cloud-upload me-1"></i>
+              {{ isSubmitting ? 'Uploading...' : 'Upload Book' }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

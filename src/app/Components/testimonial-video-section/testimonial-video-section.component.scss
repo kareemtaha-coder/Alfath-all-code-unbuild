@@ -1,0 +1,113 @@
+@import '../../../styles.scss';
+
+.section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#parentTestimonials{
+    width: 60%;
+}
+@media screen and (max-width:1200px) {
+    .section{
+        flex-direction: column;
+    }
+    .right-content{
+        width: 100%;
+    }
+    #parentTestimonials{
+        width: 100% !important;
+    }
+}
+
+
+@media (min-width: 868px ) {
+    .header[_ngcontent-ng-c3089043346] {
+      max-width: 100%;
+    }
+}
+.testimonial-carousel {
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-carousel h2 {
+    color:  $primary-color;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 350px;
+    aspect-ratio: 9 / 16;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.video-container:hover {
+    transform: scale(1.05);
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%);
+}
+
+
+
+@keyframes rotate-shape {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes float-shape {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@media (max-width: 768px) {
+    .testimonial-carousel h2 {
+        font-size: 1.75rem;
+    }
+    .video-container {
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 576px) {
+    .testimonial-carousel h2 {
+        font-size: 1.5rem;
+    }
+    #parentTestimonials{
+        width: 100% !important;
+    }
+   
+}
+.carousel-control-prev:disabled,
+.carousel-control-next:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (min-width: 868px) and (max-width: 1200px) {
+  
+    .header {
+      max-width: 100%;
+      margin-right: 2rem;
+    }
+  
+  }

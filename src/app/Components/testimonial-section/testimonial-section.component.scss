@@ -1,0 +1,574 @@
+/* testimonial.component.scss */
+@import '../../../styles.scss';
+
+.testimonial-slider {
+    background-color: $primary-color;
+    padding: 4rem 0;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .slider-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .testimonial-card {
+    background: $background-color;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 70%;
+    max-width: 400px;
+    transition: transform .3s ease, box-shadow .3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .testimonial-card:hover, .testimonial-card:focus {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .testimonial-card:focus {
+    outline: 2px solid $accent-color;
+    outline-offset: 2px;
+  }
+  
+  .testimonial-image-container {
+    width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .testimonial-image {
+    width: 100%;
+    height: 100%;
+    transition: transform .3s ease;
+  }
+  
+  .testimonial-card:hover .testimonial-image {
+    transform: scale(1.1);
+  }
+  
+  .testimonial-info {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .testimonial-info h3 {
+    color: $primary-color;
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .testimonial-info p {
+    color: $secondary-color;
+    margin: 0 0 1rem;
+    font-size: 1rem;
+    font-weight: 300;
+  }
+  
+  .testimonial-quote {
+    font-style: italic;
+    color: #000;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 1rem 0 0;
+    position: relative;
+  }
+  
+  .testimonial-quote::before,
+  .testimonial-quote::after {
+    content: '"';
+    font-size: 2rem;
+    color: $accent-color;
+    position: absolute;
+    opacity: 0.3;
+  }
+  
+  .testimonial-quote::before {
+    top: -10px;
+    left: -10px;
+  }
+  
+  .testimonial-quote::after {
+    bottom: -10px;
+    right: -10px;
+  }
+  
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    color: var(--primary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background .3s ease, transform .3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-button:hover, .nav-button:focus {
+    background: $primary-color;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  .nav-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+  }
+  
+  .nav-button:disabled {
+    background: rgba(255, 255, 255, 0.5);
+    color: #ccc;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+  }
+  
+  .nav-button.prev {
+    left: 1rem;
+  }
+  
+  .nav-button.next {
+    right: 1rem;
+  }
+  
+  .nav-button svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .slider-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(52, 152, 219, 0.3);
+    margin: 0 3px;
+    border: none;
+    cursor: pointer;
+    transition: background .3s ease, transform .3s ease;
+  }
+  
+  .dot:hover, .dot:focus {
+    transform: scale(1.2);
+  }
+  
+  .dot.active {
+    background: $background-color;
+    transform: scale(1.2);
+  }
+  
+  .dot:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.5);
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .testimonial-card {
+      width: 95%;
+    }
+  
+    .nav-button {
+      width: 40px;
+      height: 40px;
+    }
+  
+    .nav-button.prev {
+      left: 0.5rem;
+    }
+  
+    .nav-button.next {
+      right: 0.5rem;
+    }
+  
+    .nav-button svg {
+      width: 20px;
+      height: 20px;
+    }
+  
+    .modal-content {
+      width: 95%;
+    }
+  
+    .image-container {
+      height: calc(90vh - 120px);
+    }
+  
+    .zoom-controls button {
+      width: 36px;
+      height: 36px;
+    }
+  
+    .zoom-controls button:last-child {
+      padding: 0 12px;
+      font-size: 12px;
+    }
+  }
+  
+  /* Additional accessibility features */
+  @media (prefers-reduced-motion: reduce) {
+    .testimonial-card,
+    .nav-button,
+    .dot,
+    .close-button,
+    .zoom-controls button,
+    .testimonial-image {
+      transition: none;
+    }
+  
+    .slides {
+      transition: none;
+    }
+  }
+  
+  /* Focus visible polyfill */
+  .js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+  }
+  
+  /* Loading state */
+  .testimonial-image.loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  
+  /* Touch device optimizations */
+  @media (hover: none) {
+    .testimonial-card:hover {
+      transform: none;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+  
+    .testimonial-card:hover .testimonial-image {
+      transform: none;
+    }
+  
+    .nav-button:hover {
+      transform: translateY(-50%);
+    }
+  
+    .dot:hover {
+      transform: none;
+    }
+  }
+  
+  /* High contrast mode support */
+  @media (forced-colors: active) {
+    .nav-button,
+    .dot,
+    .close-button,
+    .zoom-controls button {
+      border: 1px solid ButtonText;
+    }
+  
+    .testimonial-card {
+      border: 1px solid ButtonText;
+    }
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: $primary-color;
+    border-radius: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: darken($primary-color, 10%);
+  }
+  $card-background: #ffffff;
+  $text-color: #333333;
+  $border-radius: 12px;
+  $transition-speed: 0.3s;
+  
+  // Mixins
+  @mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @mixin button-reset {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  // Modal styles
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    @include flex-center;
+    z-index: 100000000;
+  }
+  
+  .modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    background: $card-background;
+    border-radius: $border-radius;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .modal-slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .modal-slide {
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .image-container {
+    flex: 1;
+    overflow: hidden;
+    @include flex-center;
+    cursor: move;
+  }
+  
+  .modal-image {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+  }
+  
+
+  .close-button {
+    @include button-reset;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: $accent-color;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    @include flex-center;
+    z-index: 2;
+    transition: background $transition-speed ease, transform $transition-speed ease;
+  
+    &:hover,
+    &:focus {
+      background: darken($accent-color, 10%);
+      transform: scale(1.1);
+    }
+  
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($accent-color, 0.5);
+    }
+  
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  
+  .modal-nav-button {
+    @include button-reset;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    color: $primary-color;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    @include flex-center;
+    transition: background $transition-speed ease, transform $transition-speed ease;
+    z-index: 2;
+  
+    &:hover,
+    &:focus {
+      background: $primary-color;
+      color: white;
+      transform: translateY(-50%) scale(1.1);
+    }
+  
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.5);
+    }
+  
+    &:disabled {
+      background: rgba(255, 255, 255, 0.5);
+      color: #ccc;
+      cursor: not-allowed;
+      transform: translateY(-50%);
+    }
+  
+    &.prev {
+      left: 20px;
+    }
+  
+    &.next {
+      right: 20px;
+    }
+  
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+  
+  .zoom-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  
+    button {
+      @include button-reset;
+      background: $primary-color;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      @include flex-center;
+      transition: background $transition-speed ease, transform $transition-speed ease;
+  
+      &:hover,
+      &:focus {
+        background: darken($primary-color, 10%);
+        transform: scale(1.1);
+      }
+  
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.5);
+      }
+  
+      &:last-child {
+        font-size: 14px;
+        width: auto;
+        padding: 0 15px;
+        border-radius: 20px;
+      }
+  
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  
+  // Responsive design
+  @media (max-width: 768px) {
+    .modal-content {
+      width: 95%;
+    }
+  
+    .testimonial-content {
+      padding: 1rem;
+    }
+  
+    .modal-nav-button {
+      width: 40px;
+      height: 40px;
+  
+      &.prev {
+        left: 10px;
+      }
+  
+      &.next {
+        right: 10px;
+      }
+  
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  
+    .zoom-controls button {
+      width: 36px;
+      height: 36px;
+  
+      &:last-child {
+        padding: 0 12px;
+        font-size: 12px;
+      }
+    }
+  }
+  
+  // Accessibility
+  @media (prefers-reduced-motion: reduce) {
+    .modal-slides,
+    .close-button,
+    .modal-nav-button,
+    .zoom-controls button {
+      transition: none;
+    }
+  }
